@@ -161,7 +161,7 @@ const LoginPage = () => {
             <Box sx={{ my: 6 }}>
               <Typography variant='h3' sx={{ mb: 1.5 }}>
                 {/* {`Welcome to ${themeConfig.templateName}! 👋🏻`} */}
-                Welcome to Taron
+                Admin Login
               </Typography>
               <Typography sx={{ color: 'text.secondary' }}>
                 Welcome to Admin panel. Enter your credentials to manage the system
@@ -249,7 +249,7 @@ const LoginPage = () => {
               <Button fullWidth type='submit' variant='contained' sx={{ mb: 4 }}>
                 Login
               </Button>
-              <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
+              {/* <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <Typography sx={{ color: 'text.secondary', mr: 2 }}>New on our platform?</Typography>
                 <Typography href='/register' component={LinkStyled}>
                   Create an account
@@ -283,7 +283,7 @@ const LoginPage = () => {
                 <IconButton href='/' component={Link} sx={{ color: '#db4437' }} onClick={e => e.preventDefault()}>
                   <Icon icon='mdi:google' />
                 </IconButton>
-              </Box>
+              </Box> */}
             </form>
           </Box>
         </Box>
