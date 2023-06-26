@@ -20,7 +20,7 @@ import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 const data = [
   {
     title: 'Traffic',
-    img: '/images/cards/graphic-illustration-1.png',
+    img: '/images/logos/logo.png',
     details: {
       Sessions: '28%',
       'Page Views': '3.1k',
@@ -30,7 +30,7 @@ const data = [
   },
   {
     title: 'Spending',
-    img: '/images/cards/graphic-illustration-2.png',
+    img: '/images/logos/logo.png',
     details: {
       Spend: '12h',
       Orders: '18',
@@ -40,7 +40,7 @@ const data = [
   },
   {
     title: 'Revenue Sources',
-    img: '/images/cards/graphic-illustration-3.png',
+    img: '/images/logos/logo.png',
     details: {
       Direct: '268',
       Organic: '890',
@@ -181,7 +181,7 @@ const AnalyticsWebsiteAnalyticsSlider = () => {
   )
 
   return (
-    <Card sx={{ position: 'relative', backgroundColor: 'primary.main' }}>
+    <Card sx={{ position: 'relative', backgroundColor: '#2f2b3dc7' }}>
       {loaded && instanceRef.current && (
         <Box className='swiper-dots' sx={{ top: 4, right: 6, position: 'absolute' }}>
           {[...Array(instanceRef.current.track.details.slides.length).keys()].map(idx => {
