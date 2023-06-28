@@ -13,6 +13,7 @@ import Icon from 'src/@core/components/icon'
 
 // ** Configs
 import themeConfig from 'src/configs/themeConfig'
+import { fontFamily } from '@mui/system'
 
 // ** Styled Components
 const MenuHeaderWrapper = styled(Box)(({ theme }) => ({
@@ -70,17 +71,26 @@ const VerticalNavHeader = props => {
   const MenuLockedIcon = () => userMenuLockedIcon || <Icon icon='tabler:circle-dot' />
   const MenuUnlockedIcon = () => userMenuUnlockedIcon || <Icon icon='tabler:circle' />
 
+  {
+  }
+
   return (
     <MenuHeaderWrapper className='nav-header' sx={{ pl: menuHeaderPaddingLeft() }}>
       {userNavMenuBranding ? (
         userNavMenuBranding(props)
       ) : (
         <LinkStyled href='/'>
-          {/* <Image src='/images/logos/logo.png' alt='taron' width='60' height='60' />
-          <HeaderTitle variant='h4' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 1 }) }}>
-            {themeConfig.templateName}
-          </HeaderTitle> */}
-          <Image src='/images/logos/taron.png' height={50} width={50} className='login-logo' />
+          <Image src='/images/logos/logo.png' alt='taron' width='40' height='40' />
+          <HeaderTitle
+            variant='h4'
+            sx={{
+              ...menuCollapsedStyles,
+              ...(navCollapsed && !navHover ? {} : { ml: 1 }),
+              color: '#34a853'
+            }}
+          >
+            taron
+          </HeaderTitle>
         </LinkStyled>
       )}
 

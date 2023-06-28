@@ -60,7 +60,7 @@ const LoginIllustration = styled('img')(({ theme }) => ({
 const RightWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
   [theme.breakpoints.up('md')]: {
-    maxWidth: 450
+    overflow: 'hidden'
   },
   [theme.breakpoints.up('lg')]: {
     maxWidth: 600
@@ -128,7 +128,7 @@ const LoginPage = () => {
   const imageSource = skin === 'bordered' ? 'auth-v2-login-illustration-bordered' : 'auth-v2-login-illustration'
 
   return (
-    <Box className='content-right' sx={{ backgroundColor: 'background.paper' }}>
+    <Box className='content-right' sx={{ backgroundColor: 'background.paper', overflow: 'hidden' }}>
       {!hidden ? (
         <Box
           sx={{
@@ -142,7 +142,7 @@ const LoginPage = () => {
             margin: theme => theme.spacing(8, 0, 8, 8)
           }}
         >
-          <LoginIllustration alt='login-illustration' src='/images/pages/loginArt.png' />
+          <LoginIllustration alt='login-illustration' src='/images/pages/loginBanner.png' />
           <FooterIllustrationsV2 />
         </Box>
       ) : null}
@@ -160,21 +160,12 @@ const LoginPage = () => {
             <Image src='/images/logos/taron.png' height={100} width={100} className='login-logo' />
             <Box sx={{ my: 6 }}>
               <Typography variant='h3' sx={{ mb: 1.5 }}>
-                {/* {`Welcome to ${themeConfig.templateName}! 👋🏻`} */}
                 Admin Login
               </Typography>
               <Typography sx={{ color: 'text.secondary' }}>
                 Welcome to Admin panel. Enter your credentials to manage the system
               </Typography>
             </Box>
-            {/* <Alert icon={false} sx={{ py: 3, mb: 6, ...bgColors.primaryLight, '& .MuiAlert-message': { p: 0 } }}>
-              <Typography variant='body2' sx={{ mb: 2, color: 'primary.main' }}>
-                Admin: <strong>admin@vuexy.com</strong> / Pass: <strong>admin</strong>
-              </Typography>
-              <Typography variant='body2' sx={{ color: 'primary.main' }}>
-                Client: <strong>client@vuexy.com</strong> / Pass: <strong>client</strong>
-              </Typography>
-            </Alert> */}
             <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
               <Box sx={{ mb: 4 }}>
                 <Controller

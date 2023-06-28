@@ -319,11 +319,11 @@ const UserList = ({ apiData }) => {
                   }}
                 >
                   <MenuItem value=''>Select Role</MenuItem>
-                  <MenuItem value='admin'>Admin</MenuItem>
-                  <MenuItem value='author'>Author</MenuItem>
-                  <MenuItem value='editor'>Editor</MenuItem>
-                  <MenuItem value='maintainer'>Maintainer</MenuItem>
-                  <MenuItem value='subscriber'>Subscriber</MenuItem>
+                  <MenuItem value='content'>Content</MenuItem>
+                  <MenuItem value='manager'>Manager</MenuItem>
+                  <MenuItem value='support'>Support</MenuItem>
+                  <MenuItem value='ceo'>CEO</MenuItem>
+                  <MenuItem value='moderator'>Moderator</MenuItem>
                 </CustomTextField>
               </Grid>
               <Grid item sm={4} xs={12}>
@@ -356,9 +356,9 @@ const UserList = ({ apiData }) => {
                   }}
                 >
                   <MenuItem value=''>Select Status</MenuItem>
-                  <MenuItem value='pending'>Pending</MenuItem>
-                  <MenuItem value='active'>Active</MenuItem>
-                  <MenuItem value='inactive'>Inactive</MenuItem>
+                  <MenuItem value='pending'>Active</MenuItem>
+                  <MenuItem value='active'>Suspended</MenuItem>
+                  <MenuItem value='inactive'>Deleted</MenuItem>
                 </CustomTextField>
               </Grid>
             </Grid>

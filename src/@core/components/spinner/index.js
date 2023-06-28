@@ -21,7 +21,6 @@ const FallbackSpinner = ({ sx }) => {
       }}
     >
       {/* loader icon/image */}
-      <Image src='/images/logos/logo.png' alt='taron' width='60' height='60' />
       <CircularProgress disableShrink sx={{ mt: 6 }} />
     </Box>
   )

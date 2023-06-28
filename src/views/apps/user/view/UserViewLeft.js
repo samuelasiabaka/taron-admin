@@ -134,20 +134,20 @@ const UserViewLeft = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Box sx={{ mr: 8, display: 'flex', alignItems: 'center' }}>
                   <CustomAvatar skin='light' variant='rounded' sx={{ mr: 2.5, width: 38, height: 38 }}>
-                    <Icon fontSize='1.75rem' icon='tabler:checkbox' />
+                    <Icon fontSize='1.75rem' icon='tabler:calendar-event' />
                   </CustomAvatar>
                   <div>
-                    <Typography sx={{ fontWeight: 500, color: 'text.secondary' }}>1.23k</Typography>
-                    <Typography variant='body2'>Task Done</Typography>
+                    <Typography sx={{ fontWeight: 500, color: 'text.secondary' }}>Events</Typography>
+                    <Typography variant='body2'>29</Typography>
                   </div>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <CustomAvatar skin='light' variant='rounded' sx={{ mr: 2.5, width: 38, height: 38 }}>
-                    <Icon fontSize='1.75rem' icon='tabler:briefcase' />
+                    <Icon fontSize='1.75rem' icon='tabler:cash-banknote' />
                   </CustomAvatar>
                   <div>
-                    <Typography sx={{ fontWeight: 500, color: 'text.secondary' }}>568</Typography>
-                    <Typography variant='body2'>Project Done</Typography>
+                    <Typography sx={{ fontWeight: 500, color: 'text.secondary' }}>Earnings</Typography>
+                    <Typography variant='body2'>N23.7M</Typography>
                   </div>
                 </Box>
               </Box>

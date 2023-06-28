@@ -29,7 +29,7 @@ const navigation = () => {
       children: [
         {
           title: 'List',
-          path: '/apps/invoice/list'
+          path: '/apps/user/list'
         },
         {
           title: 'Details',
