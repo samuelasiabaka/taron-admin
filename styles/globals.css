@@ -25,6 +25,11 @@ code[class*='language-'] {
   padding: 0;
 }
 
+/* CUSTOM CSS - SAMUEL */
+#login {
+  overflow: hidden;
+}
+
 .login-logo {
   display: flex;
   flex: 1;
@@ -32,5 +37,5 @@ code[class*='language-'] {
   align-items: center;
   margin: auto;
   object-fit: contain;
-  width: 50%;
+  width: 40%;
 }

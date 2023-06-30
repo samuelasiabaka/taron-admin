@@ -24,7 +24,7 @@ const navigation = () => {
       sectionTitle: 'User'
     },
     {
-      title: 'Management',
+      title: 'Manage Users',
       icon: 'tabler:user',
       children: [
         {

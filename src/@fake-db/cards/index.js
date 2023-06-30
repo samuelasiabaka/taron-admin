@@ -121,7 +121,7 @@ const cardStatsData = {
     {
       stats: '237',
       trendDiff: '+42',
-      title: 'Pending Users',
+      title: 'New Users',
       avatarColor: 'warning',
       icon: 'tabler:user-exclamation',
       subtitle: 'Last week analytics'
