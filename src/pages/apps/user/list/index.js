@@ -171,6 +171,34 @@ const columns = [
       )
     }
   },
+
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: 'Username',
+    field: 'currentPlan',
+    renderCell: ({ row }) => {
+      return (
+        <Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize' }}>
+          {row.username}
+        </Typography>
+      )
+    }
+  },
+
+  {
+    flex: 0.15,
+    minWidth: 190,
+    field: 'billing',
+    headerName: 'Location',
+    renderCell: ({ row }) => {
+      return (
+        <Typography noWrap sx={{ color: 'text.secondary' }}>
+          {row.country}
+        </Typography>
+      )
+    }
+  },
   {
     flex: 0.15,
     field: 'role',
@@ -190,32 +218,6 @@ const columns = [
             {row.role}
           </Typography>
         </Box>
-      )
-    }
-  },
-  {
-    flex: 0.15,
-    minWidth: 120,
-    headerName: 'Plan',
-    field: 'currentPlan',
-    renderCell: ({ row }) => {
-      return (
-        <Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize' }}>
-          {row.currentPlan}
-        </Typography>
-      )
-    }
-  },
-  {
-    flex: 0.15,
-    minWidth: 190,
-    field: 'billing',
-    headerName: 'Billing',
-    renderCell: ({ row }) => {
-      return (
-        <Typography noWrap sx={{ color: 'text.secondary' }}>
-          {row.billing}
-        </Typography>
       )
     }
   },
@@ -330,24 +332,6 @@ const UserList = ({ apiData }) => {
                 <CustomTextField
                   select
                   fullWidth
-                  defaultValue='Select Plan'
-                  SelectProps={{
-                    value: plan,
-                    displayEmpty: true,
-                    onChange: e => handlePlanChange(e)
-                  }}
-                >
-                  <MenuItem value=''>Select Plan</MenuItem>
-                  <MenuItem value='basic'>Basic</MenuItem>
-                  <MenuItem value='company'>Company</MenuItem>
-                  <MenuItem value='enterprise'>Enterprise</MenuItem>
-                  <MenuItem value='team'>Team</MenuItem>
-                </CustomTextField>
-              </Grid>
-              <Grid item sm={4} xs={12}>
-                <CustomTextField
-                  select
-                  fullWidth
                   defaultValue='Select Status'
                   SelectProps={{
                     value: status,
@@ -377,7 +361,6 @@ const UserList = ({ apiData }) => {
           />
         </Card>
       </Grid>
-
       <AddUserDrawer open={addUserOpen} toggle={toggleAddUserDrawer} />
     </Grid>
   )
