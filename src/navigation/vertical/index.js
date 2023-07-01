@@ -32,25 +32,11 @@ const navigation = () => {
           path: '/apps/user/list'
         },
         {
-          title: 'Details',
-          path: '/apps/invoice/preview'
-        },
-        {
           title: 'Roles and Permissions',
           path: '/apps/invoice/edit'
-        }
-      ]
-    },
-    {
-      title: 'Account Management',
-      icon: 'tabler:settings',
-      children: [
-        {
-          title: 'Activation/Deactivation',
-          path: '/apps/invoice/list'
         },
         {
-          title: 'User Reporting and Flagging',
+          title: 'Reporting/Flagging',
           path: '/apps/invoice/preview'
         },
         {
@@ -59,6 +45,24 @@ const navigation = () => {
         }
       ]
     },
+    // {
+    //   title: 'Account Management',
+    //   icon: 'tabler:settings',
+    //   children: [
+    //     {
+    //       title: 'Activation/Deactivation',
+    //       path: '/apps/invoice/list'
+    //     },
+    //     {
+    //       title: 'Reporting/Flagging',
+    //       path: '/apps/invoice/preview'
+    //     },
+    //     {
+    //       title: 'Bans and Suspension',
+    //       path: '/apps/invoice/edit'
+    //     }
+    //   ]
+    // },
     {
       title: 'Interaction',
       icon: 'tabler:social',
