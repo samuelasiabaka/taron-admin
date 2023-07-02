@@ -120,14 +120,7 @@ const UserViewLeft = () => {
               <Typography variant='h4' sx={{ mb: 3 }}>
                 {data.fullName}
               </Typography>
-              <CustomChip
-                rounded
-                skin='light'
-                size='small'
-                label={data.role}
-                color={roleColors[data.role]}
-                sx={{ textTransform: 'capitalize' }}
-              />
+              <Typography sx={{ color: 'text.secondary' }}>User: Since 29/02/2023</Typography>
             </CardContent>
 
             <CardContent sx={{ pt: theme => `${theme.spacing(2)} !important` }}>

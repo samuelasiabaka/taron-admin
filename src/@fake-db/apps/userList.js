@@ -1,6 +1,9 @@
 // ** Mock
 import mock from 'src/@fake-db/mock'
 
+const now = new Date()
+const currentMonth = now.toLocaleString('default', { month: 'short' })
+
 const data = {
   users: [
     {
@@ -733,7 +736,10 @@ const projectListData = [
     progressColor: 'success',
     projectType: 'React Project',
     projectTitle: 'BGC eCommerce App',
-    img: '/images/icons/project-icons/react.png'
+    img: '/images/icons/project-icons/react.png',
+    date: `23 ${currentMonth} ${now.getFullYear()}`,
+    status: 'Active',
+    type: 'Online'
   },
   {
     id: 2,
@@ -743,7 +749,10 @@ const projectListData = [
     progressColor: 'error',
     projectType: 'Figma Project',
     projectTitle: 'Falcon Logo Design',
-    img: '/images/icons/project-icons/figma.png'
+    img: '/images/icons/project-icons/figma.png',
+    date: `23 ${currentMonth} ${now.getFullYear()}`,
+    status: 'Active',
+    type: 'Online'
   },
   {
     id: 3,
@@ -753,7 +762,10 @@ const projectListData = [
     progressColor: 'primary',
     projectType: 'VueJs Project',
     projectTitle: 'Dashboard Design',
-    img: '/images/icons/project-icons/vue.png'
+    img: '/images/icons/project-icons/vue.png',
+    date: `23 ${currentMonth} ${now.getFullYear()}`,
+    status: 'Active',
+    type: 'Online'
   },
   {
     id: 4,
@@ -763,7 +775,10 @@ const projectListData = [
     progressColor: 'error',
     projectType: 'Xamarin Project',
     projectTitle: 'Foodista Mobile App',
-    img: '/images/icons/project-icons/xamarin.png'
+    img: '/images/icons/project-icons/xamarin.png',
+    date: `23 ${currentMonth} ${now.getFullYear()}`,
+    status: 'Active',
+    type: 'Online'
   },
   {
     id: 5,
@@ -773,7 +788,10 @@ const projectListData = [
     progressColor: 'warning',
     projectType: 'Python Project',
     projectTitle: 'Dojo React Project',
-    img: '/images/icons/project-icons/python.png'
+    img: '/images/icons/project-icons/python.png',
+    date: `23 ${currentMonth} ${now.getFullYear()}`,
+    status: 'Active',
+    type: 'Online'
   },
   {
     id: 6,
@@ -783,7 +801,10 @@ const projectListData = [
     progressColor: 'success',
     projectType: 'Sketch Project',
     projectTitle: 'Blockchain Website',
-    img: '/images/icons/project-icons/sketch.png'
+    img: '/images/icons/project-icons/sketch.png',
+    date: `23 ${currentMonth} ${now.getFullYear()}`,
+    status: 'Active',
+    type: 'Online'
   },
   {
     id: 7,
@@ -793,7 +814,10 @@ const projectListData = [
     progressColor: 'success',
     projectType: 'HTML Project',
     projectTitle: 'Hoffman Website',
-    img: '/images/icons/project-icons/html5.png'
+    img: '/images/icons/project-icons/html5.png',
+    date: `23 ${currentMonth} ${now.getFullYear()}`,
+    status: 'Active',
+    type: 'Online'
   }
 ]
 

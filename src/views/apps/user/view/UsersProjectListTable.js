@@ -29,7 +29,7 @@ const columns = [
     flex: 0.35,
     minWidth: 250,
     field: 'projectTitle',
-    headerName: 'Project',
+    headerName: 'Event',
     renderCell: ({ row }) => (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Img src={row.img} alt={`project-${row.projectTitle}`} />
@@ -43,30 +43,25 @@ const columns = [
     )
   },
   {
-    flex: 0.2,
+    flex: 0.25,
     minWidth: 126,
     field: 'totalTask',
-    headerName: 'Total Tasks',
-    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.totalTask}</Typography>
+    headerName: 'Date',
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.date}</Typography>
   },
   {
-    flex: 0.25,
+    flex: 0.15,
     minWidth: 180,
-    headerName: 'Progress',
+    headerName: 'Status',
     field: 'progressValue',
-    renderCell: ({ row }) => (
-      <Box sx={{ width: '100%' }}>
-        <Typography sx={{ mb: 1.5, color: 'text.secondary' }}>{`${row.progressValue}%`}</Typography>
-        <LinearProgress sx={{ height: 8 }} variant='determinate' value={row.progressValue} color={row.progressColor} />
-      </Box>
-    )
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.status}</Typography>
   },
   {
     flex: 0.2,
     minWidth: 110,
     field: 'hours',
-    headerName: 'Hours',
-    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{`${row.hours}h`}</Typography>
+    headerName: 'Type',
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.type}</Typography>
   }
 ]
 
