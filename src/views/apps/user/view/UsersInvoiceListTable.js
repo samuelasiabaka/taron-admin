@@ -136,7 +136,7 @@ const InvoiceListTable = ({ invoiceData }) => {
   return (
     <Card>
       <CardHeader
-        title='Invoice List'
+        title='Transaction History'
         sx={{ '& .MuiCardHeader-action': { m: 0 } }}
         action={
           <>
