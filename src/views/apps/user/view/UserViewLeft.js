@@ -186,8 +186,12 @@ const UserViewLeft = () => {
                   <Typography sx={{ color: 'text.secondary', textTransform: 'capitalize' }}>{data.role}</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', mb: 3 }}>
-                  <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>Tax ID:</Typography>
-                  <Typography sx={{ color: 'text.secondary' }}>Tax-8894</Typography>
+                  <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>DOB:</Typography>
+                  <Typography sx={{ color: 'text.secondary' }}>04/3/2020</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', mb: 3 }}>
+                  <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>Interest:</Typography>
+                  <Typography sx={{ color: 'text.secondary' }}>Music, Comedy, Weddings</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', mb: 3 }}>
                   <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>Contact:</Typography>
@@ -198,7 +202,7 @@ const UserViewLeft = () => {
                   <Typography sx={{ color: 'text.secondary' }}>English</Typography>
                 </Box>
                 <Box sx={{ display: 'flex' }}>
-                  <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>Country:</Typography>
+                  <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>Location:</Typography>
                   <Typography sx={{ color: 'text.secondary' }}>{data.country}</Typography>
                 </Box>
               </Box>
@@ -340,43 +344,24 @@ const UserViewLeft = () => {
         <Grid item xs={12}>
           <Card>
             <CardContent sx={{ pb: 1, display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-              <CustomChip rounded skin='light' size='small' color='primary' label='Popular' />
-              <Box sx={{ display: 'flex', position: 'relative' }}>
-                <Sup>$</Sup>
-                <Typography
-                  variant='h4'
-                  sx={{ mt: -1, mb: -1.2, color: 'primary.main', fontSize: '2.375rem !important' }}
-                >
-                  99
-                </Typography>
-                <Sub>/ month</Sub>
-              </Box>
+              <CustomChip rounded skin='light' size='small' color='primary' label='Verified' />
             </CardContent>
 
             <CardContent>
               <Box sx={{ mt: 2.5, mb: 4 }}>
                 <Box sx={{ display: 'flex', mb: 2, alignItems: 'center', '& svg': { mr: 2, color: 'text.secondary' } }}>
                   <Icon icon='tabler:point' fontSize='1.125rem' />
-                  <Typography sx={{ color: 'text.secondary' }}>10 Users</Typography>
+                  <Typography sx={{ color: 'text.secondary' }}>Followers: 45.4k</Typography>
                 </Box>
                 <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', '& svg': { mr: 2, color: 'text.secondary' } }}>
                   <Icon icon='tabler:point' fontSize='1.125rem' />
-                  <Typography sx={{ color: 'text.secondary' }}>Up to 10GB storage</Typography>
+                  <Typography sx={{ color: 'text.secondary' }}>Following: 3k</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 2, color: 'text.secondary' } }}>
                   <Icon icon='tabler:point' fontSize='1.125rem' />
-                  <Typography sx={{ color: 'text.secondary' }}>Basic Support</Typography>
+                  <Typography sx={{ color: '#34a853' }}>Wallet: ₦400k</Typography>
                 </Box>
               </Box>
-              <Box sx={{ display: 'flex', mb: 1.5, justifyContent: 'space-between' }}>
-                <Typography sx={{ fontWeight: 500 }}>Days</Typography>
-                <Typography sx={{ fontWeight: 500 }}>75% Completed</Typography>
-              </Box>
-              <LinearProgress value={75} variant='determinate' sx={{ height: 10 }} />
-              <Typography sx={{ mt: 1.5, mb: 6, color: 'text.secondary' }}>4 days remaining</Typography>
-              <Button fullWidth variant='contained' onClick={handlePlansClickOpen}>
-                Upgrade Plan
-              </Button>
             </CardContent>
 
             <Dialog

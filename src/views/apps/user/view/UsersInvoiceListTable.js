@@ -50,40 +50,11 @@ const columns = [
     )
   },
   {
-    flex: 0.15,
+    flex: 0.3,
     minWidth: 80,
-    field: 'invoiceStatus',
-    renderHeader: () => <Icon icon='tabler:trending-up' fontSize='1.125rem' />,
-    renderCell: ({ row }) => {
-      const { dueDate, balance, invoiceStatus } = row
-      const color = invoiceStatusObj[invoiceStatus] ? invoiceStatusObj[invoiceStatus].color : 'primary'
-
-      return (
-        <Tooltip
-          title={
-            <>
-              <Typography variant='caption' sx={{ color: 'common.white', fontWeight: 600 }}>
-                {invoiceStatus}
-              </Typography>
-              <br />
-              <Typography variant='caption' sx={{ color: 'common.white', fontWeight: 600 }}>
-                Balance:
-              </Typography>{' '}
-              {balance}
-              <br />
-              <Typography variant='caption' sx={{ color: 'common.white', fontWeight: 600 }}>
-                Due Date:
-              </Typography>{' '}
-              {dueDate}
-            </>
-          }
-        >
-          <CustomAvatar skin='light' color={color} sx={{ width: 30, height: 30 }}>
-            <Icon icon={invoiceStatusObj[invoiceStatus].icon} />
-          </CustomAvatar>
-        </Tooltip>
-      )
-    }
+    field: 'events',
+    headerName: 'Events',
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.event}</Typography>
   },
   {
     flex: 0.2,
