@@ -50,8 +50,8 @@ const columns = [
     renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.date}</Typography>
   },
   {
-    flex: 0.15,
-    minWidth: 180,
+    flex: 0.2,
+    minWidth: 110,
     headerName: 'Status',
     field: 'progressValue',
     renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.status}</Typography>
