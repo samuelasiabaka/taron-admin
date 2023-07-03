@@ -205,9 +205,6 @@ const UserViewLeft = () => {
               <Button variant='contained' sx={{ mr: 2 }} onClick={handleEditClickOpen}>
                 Edit
               </Button>
-              <Button color='error' variant='tonal' onClick={() => setSuspendDialogOpen(true)}>
-                Suspend
-              </Button>
             </CardActions>
 
             <Dialog
@@ -250,30 +247,20 @@ const UserViewLeft = () => {
                     <Grid item xs={12} sm={6}>
                       <CustomTextField
                         fullWidth
-                        label='Username'
-                        placeholder='John.Doe'
-                        defaultValue={data.username}
-                        InputProps={{ startAdornment: <InputAdornment position='start'>@</InputAdornment> }}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <CustomTextField
-                        fullWidth
                         type='email'
-                        label='Billing Email'
+                        label='Email'
                         defaultValue={data.email}
                         placeholder='john.doe@gmail.com'
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <CustomTextField select fullWidth label='Status' defaultValue={data.status}>
-                        <MenuItem value='pending'>Pending</MenuItem>
-                        <MenuItem value='active'>Active</MenuItem>
-                        <MenuItem value='inactive'>Inactive</MenuItem>
-                      </CustomTextField>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <CustomTextField fullWidth label='TAX ID' defaultValue='Tax-8894' placeholder='Tax-8894' />
+                      <CustomTextField
+                        fullWidth
+                        label='Username'
+                        placeholder='John.Doe'
+                        defaultValue={data.username}
+                        InputProps={{ startAdornment: <InputAdornment position='start'>@</InputAdornment> }}
+                      />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <CustomTextField
@@ -294,7 +281,11 @@ const UserViewLeft = () => {
                       </CustomTextField>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <CustomTextField select fullWidth label='Country' defaultValue='USA'>
+                      <CustomTextField fullWidth label='DOB' defaultValue='20/08/2000' placeholder='DOB' />
+                    </Grid>
+
+                    <Grid item xs={12} sm={6}>
+                      <CustomTextField select fullWidth label='Location' defaultValue='USA'>
                         <MenuItem value='USA'>USA</MenuItem>
                         <MenuItem value='UK'>UK</MenuItem>
                         <MenuItem value='Spain'>Spain</MenuItem>
@@ -302,13 +293,6 @@ const UserViewLeft = () => {
                         <MenuItem value='France'>France</MenuItem>
                         <MenuItem value='Germany'>Germany</MenuItem>
                       </CustomTextField>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <FormControlLabel
-                        label='Use as a billing address?'
-                        control={<Switch defaultChecked />}
-                        sx={{ '& .MuiTypography-root': { fontWeight: 500 } }}
-                      />
                     </Grid>
                   </Grid>
                 </form>
