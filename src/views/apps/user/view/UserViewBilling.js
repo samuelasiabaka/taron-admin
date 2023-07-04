@@ -27,6 +27,7 @@ import LinearProgress from '@mui/material/LinearProgress'
 import TableContainer from '@mui/material/TableContainer'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import DialogContentText from '@mui/material/DialogContentText'
+import { DataGrid } from '@mui/x-data-grid'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
@@ -65,6 +66,44 @@ const Sub = styled('sub')(({ theme }) => ({
   color: theme.palette.text.disabled,
   fontSize: theme.typography.body1.fontSize
 }))
+
+// ** row
+const rowData = [
+  { id: 1, date: '20/01/2021', remark: 'You spent $1,000 at John weds Jane event', time: '12:00pm' },
+  { id: 2, date: '02/03/2021', remark: 'You added $1,000', time: '12:00pm' },
+  { id: 3, date: '31/11/2021', remark: 'You added $1,000', time: '12:00pm' },
+  { id: 4, date: '16/02/2022', remark: 'You added $1,000', time: '12:00pm' },
+  { id: 5, date: '23/06/2022', remark: 'You added $1,000', time: '12:00pm' },
+  { id: 6, date: '10/12/2022', remark: 'You spent $1,000 at John weds Jane event', time: '12:00pm' },
+  { id: 7, date: '20/04/2023', remark: 'You added $1,000', time: '12:00pm' },
+  { id: 8, date: '09/07/2023', remark: 'You added $1,000', time: '12:00pm' },
+  { id: 9, date: '20/09/2023', remark: 'You added $1,000', time: '12:00pm' }
+]
+
+// ** column
+const columnData = [
+  {
+    flex: 0.15,
+    minWidth: 110,
+    field: 'totalTask',
+    headerName: 'Date',
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.date}</Typography>
+  },
+  {
+    flex: 0.5,
+    minWidth: 350,
+    headerName: 'Remark',
+    field: 'progressValue',
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.remark}</Typography>
+  },
+  {
+    flex: 0.15,
+    minWidth: 110,
+    field: 'hours',
+    headerName: 'Time',
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.time}</Typography>
+  }
+]
 
 const data = [
   {
@@ -108,6 +147,8 @@ const UserViewBilling = () => {
   const [openAddressCard, setOpenAddressCard] = useState(false)
   const [openUpgradePlans, setOpenUpgradePlans] = useState(false)
   const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false)
+
+  const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 7 })
 
   // Handle Edit Card dialog and get card ID
   const handleEditCardClickOpen = id => {
@@ -160,15 +201,16 @@ const UserViewBilling = () => {
     <Grid container spacing={6}>
       <Grid item xs={12}>
         <Card>
-          <CardHeader title='Current plan' />
+          <CardHeader title='Wallet' />
           <CardContent>
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <Box sx={{ mb: 3 }}>
-                  <Typography sx={{ fontWeight: 500 }}>Your Current Plan is Basic</Typography>
-                  <Typography variant='body2'>A simple start for everyone</Typography>
+                  <Typography sx={{ fontWeight: 700, color: theme => theme.palette.primary.main }}>
+                    Balance: $5,000
+                  </Typography>
                 </Box>
-                <Box sx={{ mb: 3 }}>
+                {/* <Box sx={{ mb: 3 }}>
                   <Typography sx={{ fontWeight: 500 }}>Active until Dec 09, 2023</Typography>
                   <Typography variant='body2'>We will send you a notification upon Subscription expiration</Typography>
                 </Box>
@@ -178,10 +220,10 @@ const UserViewBilling = () => {
                     <CustomChip rounded skin='light' size='small' label='Popular' color='primary' />
                   </Box>
                   <Typography variant='body2'>Standard plan for small to medium businesses</Typography>
-                </div>
+                </div> */}
               </Grid>
 
-              <Grid item xs={12} md={6} sx={{ mt: [4, 4, 0] }}>
+              {/* <Grid item xs={12} md={6} sx={{ mt: [4, 4, 0] }}>
                 <Alert icon={false} severity='warning' sx={{ mb: 4 }}>
                   <AlertTitle
                     sx={{ fontWeight: 500, fontSize: '1.125rem', mb: theme => `${theme.spacing(2.5)} !important` }}
@@ -196,15 +238,15 @@ const UserViewBilling = () => {
                 </Box>
                 <LinearProgress value={80} variant='determinate' sx={{ mb: 1.5, height: 10 }} />
                 <Typography sx={{ color: 'text.secondary' }}>6 days remaining</Typography>
-              </Grid>
+              </Grid> */}
 
               <Grid item xs={12} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start' }}>
                 <Button variant='contained' onClick={handleUpgradePlansClickOpen} sx={{ mr: 4, mb: [2, 0] }}>
-                  Upgrade Plan
+                  Add funds
                 </Button>
-                <Button variant='tonal' color='error' onClick={() => setSubscriptionDialogOpen(true)}>
+                {/* <Button variant='tonal' color='error' onClick={() => setSubscriptionDialogOpen(true)}>
                   Cancel Subscription
-                </Button>
+                </Button> */}
               </Grid>
             </Grid>
           </CardContent>
@@ -495,135 +537,24 @@ const UserViewBilling = () => {
       <Grid item xs={12}>
         <Card>
           <CardHeader
-            title='Billing Address'
+            title='Transactions'
             action={
-              <Button variant='contained' onClick={() => setOpenAddressCard(true)}>
-                Edit Address
+              <Button variant='contained' onClick={() => setOpenAddressCard(false)}>
+                Add More
               </Button>
             }
           />
           <CardContent>
-            <Grid container spacing={6}>
-              <Grid item xs={12} lg={6}>
-                <TableContainer>
-                  <Table size='small' sx={{ width: '95%' }}>
-                    <TableBody
-                      sx={{
-                        '& .MuiTableCell-root': {
-                          border: 0,
-                          pt: 2,
-                          pb: 2,
-                          pl: '0 !important',
-                          pr: '0 !important',
-                          verticalAlign: 'unset',
-                          '&:first-of-type': {
-                            width: 150
-                          }
-                        }
-                      }}
-                    >
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>Company Name:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>Pixinvent</Typography>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>Billing Email:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>gertrude@gmail.com</Typography>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>Tax ID:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>TAX-875623</Typography>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>VAT Number:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>SDF754K77</Typography>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>Billing Address:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>
-                            100 Water Plant Avenue, Building 1303 Wake Island
-                          </Typography>
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Grid>
-
-              <Grid item xs={12} lg={6}>
-                <TableContainer>
-                  <Table size='small'>
-                    <TableBody
-                      sx={{
-                        '& .MuiTableCell-root': {
-                          border: 0,
-                          pt: 2,
-                          pb: 2,
-                          pl: '0 !important',
-                          pr: '0 !important',
-                          verticalAlign: 'unset',
-                          '&:first-of-type': {
-                            width: 150
-                          }
-                        }
-                      }}
-                    >
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>Contact:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>+1(609) 933-44-22</Typography>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>Country:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>Australia</Typography>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>State:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>Queensland</Typography>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <Typography sx={{ fontWeight: 500 }}>Zip Code:</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography sx={{ color: 'text.secondary' }}>403114</Typography>
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Grid>
-            </Grid>
+            <DataGrid
+              autoHeight
+              rows={rowData}
+              rowHeight={60}
+              columns={columnData}
+              disableRowSelectionOnClick
+              pageSizeOptions={[7, 10, 25, 50]}
+              paginationModel={paginationModel}
+              onPaginationModelChange={setPaginationModel}
+            />
           </CardContent>
 
           <Dialog

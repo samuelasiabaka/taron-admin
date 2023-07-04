@@ -305,7 +305,7 @@ const UserViewLeft = () => {
                 }}
               >
                 <Button variant='contained' sx={{ mr: 2 }} onClick={handleEditClose}>
-                  Submit
+                  Update
                 </Button>
                 <Button variant='tonal' color='secondary' onClick={handleEditClose}>
                   Cancel

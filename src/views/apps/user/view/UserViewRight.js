@@ -97,11 +97,7 @@ const UserViewRight = ({ tab, invoiceData }) => {
       >
         <Tab value='account' label='Account' icon={<Icon fontSize='1.125rem' icon='tabler:user-check' />} />
         <Tab value='security' label='Security' icon={<Icon fontSize='1.125rem' icon='tabler:lock' />} />
-        <Tab
-          value='billing-plan'
-          label='Billing & Plan'
-          icon={<Icon fontSize='1.125rem' icon='tabler:currency-dollar' />}
-        />
+        <Tab value='billing-plan' label='Wallet' icon={<Icon fontSize='1.125rem' icon='tabler:wallet' />} />
         <Tab value='notification' label='Notification' icon={<Icon fontSize='1.125rem' icon='tabler:bell' />} />
         <Tab value='connection' label='Connection' icon={<Icon fontSize='1.125rem' icon='tabler:link' />} />
       </TabList>
