@@ -45,13 +45,14 @@ const cardData = [
 
 const rolesArr = [
   'User Management',
+  'Event Management',
   'Content Management',
-  'Disputes Management',
-  'Database Management',
+  'Help and Support',
+  'Account Verification',
   'Financial Management',
-  'Reporting',
+  'Analytics/Reporting',
   'API Control',
-  'Repository Management',
+  'CRM',
   'Payroll'
 ]
 

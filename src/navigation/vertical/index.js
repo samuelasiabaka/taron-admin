@@ -33,7 +33,7 @@ const navigation = () => {
         },
         {
           title: 'Roles and Permissions',
-          path: '/apps/invoice/edit'
+          path: '/apps/roles'
         },
         {
           title: 'Reporting/Flagging',

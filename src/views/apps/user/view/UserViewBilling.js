@@ -269,15 +269,63 @@ const UserViewBilling = () => {
                 pt: theme => [`${theme.spacing(8)} !important`, `${theme.spacing(12.5)} !important`]
               }}
             >
-              Upgrade Plan
+              Add Money
             </DialogTitle>
 
-            <DialogContent sx={{ px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`] }}>
+            {/* <DialogContent sx={{ px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`] }}>
               <DialogContentText sx={{ textAlign: 'center' }} id='user-view-plans-description'>
                 Choose the best plan for the user.
               </DialogContentText>
-            </DialogContent>
+            </DialogContent> */}
 
+            <DialogContent
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+                gap: 8,
+                overflow: 'hidden',
+                flexWrap: ['wrap', 'nowrap'],
+                pt: theme => `${theme.spacing(2)} !important`,
+                pb: theme => `${theme.spacing(8)} !important`,
+                px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`]
+              }}
+            >
+              <CustomTextField
+                fullWidth
+                autoFocus
+                label='Amount'
+                type='number'
+                placeholder='0.00'
+                sx={{ mr: [0, 3], mb: [3, 0] }}
+              />
+              <CustomTextField select fullWidth label='Currency Type' defaultValue='us' sx={{ mr: [0, 3], mb: [3, 0] }}>
+                <MenuItem value='us'>$ US Dollars</MenuItem>
+                <MenuItem value='ngn'>₦ NGN Naira</MenuItem>
+                <MenuItem value='gbp'>£ GBP Pounds</MenuItem>
+                <MenuItem value='eu'>€ EU Euro</MenuItem>
+              </CustomTextField>
+              <Button variant='contained' sx={{ minWidth: ['100%', 0], mt: 4 }}>
+                Done
+              </Button>
+            </DialogContent>
+            {/* <DialogContent
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexWrap: ['wrap', 'nowrap'],
+                pt: theme => `${theme.spacing(2)} !important`,
+                pb: theme => `${theme.spacing(8)} !important`,
+                px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`]
+              }}
+            >
+              <CustomTextField select fullWidth label='Currency Type' defaultValue='us' sx={{ mr: [0, 3], mb: [3, 0] }}>
+                <MenuItem value='us'>$ US Dollars</MenuItem>
+                <MenuItem value='ngn'>₦ NGN Naira</MenuItem>
+                <MenuItem value='gbp'>£ GBP Pounds</MenuItem>
+                <MenuItem value='eu'>€ EU Euro</MenuItem>
+              </CustomTextField>
+            </DialogContent>
             <DialogContent
               sx={{
                 display: 'flex',
@@ -288,26 +336,12 @@ const UserViewBilling = () => {
                 px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`]
               }}
             >
-              <CustomTextField
-                select
-                fullWidth
-                label='Choose Plan'
-                defaultValue='Standard'
-                sx={{ mr: [0, 3], mb: [3, 0] }}
-              >
-                <MenuItem value='Basic'>Basic - $0/month</MenuItem>
-                <MenuItem value='Standard'>Standard - $99/month</MenuItem>
-                <MenuItem value='Enterprise'>Enterprise - $499/month</MenuItem>
-                <MenuItem value='Company'>Company - $999/month</MenuItem>
-              </CustomTextField>
               <Button variant='contained' sx={{ minWidth: ['100%', 0], mt: 4 }}>
-                Upgrade
+                Done
               </Button>
-            </DialogContent>
+            </DialogContent> */}
 
-            <Divider sx={{ m: '0 !important' }} />
-
-            <DialogContent
+            {/* <DialogContent
               sx={{
                 pt: theme => [`${theme.spacing(8)} !important`, `${theme.spacing(8)} !important`],
                 px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`],
@@ -344,7 +378,7 @@ const UserViewBilling = () => {
                   Cancel Subscription
                 </Button>
               </Box>
-            </DialogContent>
+            </DialogContent> */}
           </Dialog>
         </Card>
       </Grid>
@@ -536,14 +570,7 @@ const UserViewBilling = () => {
 
       <Grid item xs={12}>
         <Card>
-          <CardHeader
-            title='Transactions'
-            action={
-              <Button variant='contained' onClick={() => setOpenAddressCard(false)}>
-                Add More
-              </Button>
-            }
-          />
+          <CardHeader title='Transactions' />
           <CardContent>
             <DataGrid
               autoHeight

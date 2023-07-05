@@ -99,6 +99,33 @@ const columns = [
   },
   {
     flex: 0.15,
+    minWidth: 120,
+    headerName: 'Username',
+    field: 'currentPlan',
+    renderCell: ({ row }) => {
+      return (
+        <Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize' }}>
+          {row.username}
+        </Typography>
+      )
+    }
+  },
+
+  {
+    flex: 0.15,
+    minWidth: 190,
+    field: 'billing',
+    headerName: 'Location',
+    renderCell: ({ row }) => {
+      return (
+        <Typography noWrap sx={{ color: 'text.secondary' }}>
+          {row.country}
+        </Typography>
+      )
+    }
+  },
+  {
+    flex: 0.15,
     field: 'role',
     minWidth: 170,
     headerName: 'Role',
@@ -116,32 +143,6 @@ const columns = [
             {row.role}
           </Typography>
         </Box>
-      )
-    }
-  },
-  {
-    flex: 0.1,
-    minWidth: 120,
-    headerName: 'Plan',
-    field: 'currentPlan',
-    renderCell: ({ row }) => {
-      return (
-        <Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize' }}>
-          {row.currentPlan}
-        </Typography>
-      )
-    }
-  },
-  {
-    flex: 0.15,
-    minWidth: 190,
-    field: 'billing',
-    headerName: 'Billing',
-    renderCell: ({ row }) => {
-      return (
-        <Typography noWrap sx={{ color: 'text.secondary' }}>
-          {row.billing}
-        </Typography>
       )
     }
   },
@@ -215,7 +216,7 @@ const UserList = () => {
             rowHeight={62}
             rows={store.data}
             columns={columns}
-            checkboxSelection
+            // checkboxSelection
             disableRowSelectionOnClick
             pageSizeOptions={[10, 25, 50]}
             paginationModel={paginationModel}
