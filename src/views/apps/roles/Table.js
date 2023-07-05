@@ -216,7 +216,6 @@ const UserList = () => {
             rowHeight={62}
             rows={store.data}
             columns={columns}
-            // checkboxSelection
             disableRowSelectionOnClick
             pageSizeOptions={[10, 25, 50]}
             paginationModel={paginationModel}
