@@ -12,6 +12,7 @@ export const getStaticPaths = () => {
   return {
     paths: [
       { params: { tab: 'profile' } },
+      { params: { tab: 'profile' } },
       { params: { tab: 'teams' } },
       { params: { tab: 'projects' } },
       { params: { tab: 'connections' } }

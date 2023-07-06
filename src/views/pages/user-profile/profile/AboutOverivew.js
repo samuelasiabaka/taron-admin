@@ -89,12 +89,14 @@ const AboutOverivew = props => {
               </Typography>
               {renderList(contacts)}
             </Box>
-            <div>
+            <Box sx={{ mb: 6 }}>
               <Typography variant='body2' sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}>
-                Teams
+                Bio
               </Typography>
-              {renderTeams(teams)}
-            </div>
+              <Typography sx={{ color: 'text.secondary' }}>
+                John works as a Data Analyst at Riley Freeman LLC
+              </Typography>
+            </Box>
           </CardContent>
         </Card>
       </Grid>
@@ -105,6 +107,17 @@ const AboutOverivew = props => {
               <Typography variant='body2' sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}>
                 Overview
               </Typography>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  mb: 3
+                }}
+              >
+                <Icon fontSize='1.25rem' icon='tabler:check' />
+                <Typography sx={{ mx: 2, fontWeight: 500, color: 'red' }}>Unverified</Typography>
+              </Box>
+
               {renderList(overview)}
             </div>
           </CardContent>

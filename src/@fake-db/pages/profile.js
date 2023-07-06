@@ -8,30 +8,35 @@ const data = {
     fullName: 'Belle Ferguson',
     designation: 'UX Designer',
     profileImg: '/images/avatars/14.png',
-    designationIcon: 'tabler:color-swatch',
+    designationIcon: 'material-symbols:work-outline',
     coverImg: '/images/pages/profile-banner.png'
   },
   profile: {
     about: [
       { property: 'Full Name', value: 'John Doe', icon: 'tabler:user' },
-      { property: 'Status', value: 'active', icon: 'tabler:check' },
-      { property: 'Role', value: 'Developer', icon: 'tabler:crown' },
+      { property: 'Username', value: 'johndoe332', icon: 'tabler:user-circle' },
+      { property: 'Email', value: 'john.doe@example.com', icon: 'tabler:mail' },
+      { property: 'Role', value: 'User', icon: 'tabler:crown' },
+      { property: 'Occupation', value: 'Web Developer', icon: 'material-symbols:work-outline' },
+      { property: 'Organization', value: 'Riley Freeman LLC', icon: 'octicon:organization-24' },
+      { property: 'DOB', value: '10/12/2005', icon: 'mdi:birthday-cake-outline' },
+      { property: 'Interest', value: 'Music, Comedy, Concerts', icon: 'icon-park-outline:like' },
       { property: 'Country', value: 'USA', icon: 'tabler:flag' },
       { property: 'Language', value: 'English', icon: 'tabler:language' }
     ],
     contacts: [
       { property: 'Contact', value: '(123) 456-7890', icon: 'tabler:phone-call' },
-      { property: 'Skype', value: 'john.doe', icon: 'tabler:brand-skype' },
-      { property: 'Email', value: 'john.doe@example.com', icon: 'tabler:mail' }
+      { property: 'Instagram', value: 'john.doe', icon: 'tabler:brand-instagram' },
+      { property: 'Website', value: 'john.doe', icon: 'mdi:web' }
     ],
     teams: [
       { property: 'Backend Developer', value: '(126 Members)', icon: 'tabler:brand-github', color: 'primary' },
       { property: 'React Developer', value: '(98 Members)', icon: 'tabler:brand-react', color: 'info' }
     ],
     overview: [
-      { property: 'Task Compiled', value: '13.5k', icon: 'tabler:check' },
-      { property: 'Connections', value: '897', icon: 'tabler:users' },
-      { property: 'Projects Compiled', value: '146', icon: 'tabler:layout-grid' }
+      { property: 'Followers', value: '13.5k', icon: 'tabler:users' },
+      { property: 'Following', value: '897', icon: 'tabler:users' },
+      { property: 'Events', value: '146', icon: 'tabler:calendar-event' }
     ],
     connections: [
       {

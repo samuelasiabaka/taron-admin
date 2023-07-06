@@ -1,33 +1,42 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // ** Next Import
 import Link from 'next/link'
 
-// ** MUI Imports
+// ** MUI Components
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Menu from '@mui/material/Menu'
-import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import Tooltip from '@mui/material/Tooltip'
+import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import { styled } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
+import AvatarGroup from '@mui/material/AvatarGroup'
 import { DataGrid } from '@mui/x-data-grid'
+import LinearProgress from '@mui/material/LinearProgress'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 
-// ** Custom Component Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
+// ** Third Party Imports
+import axios from 'axios'
+
+// ** Custom Components Imports
 import OptionsMenu from 'src/@core/components/option-menu'
+import CustomAvatar from 'src/@core/components/mui/avatar'
+import CustomTextField from 'src/@core/components/mui/text-field'
 
 const LinkStyled = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
   color: `${theme.palette.primary.main} !important`
 }))
+
+// ** Utils Import
+import { getInitials } from 'src/@core/utils/get-initials'
 
 const columns = [
   {
@@ -107,9 +116,11 @@ const columns = [
   }
 ]
 
-const InvoiceListTable = ({ invoiceData }) => {
-  // ** State
+const ProfileTable = ({ invoiceData }) => {
   const [anchorEl, setAnchorEl] = useState(null)
+  // ** State
+  //   const [data, setData] = useState([])
+  const [value, setValue] = useState('')
   const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 7 })
 
   // ** Var
@@ -121,6 +132,16 @@ const InvoiceListTable = ({ invoiceData }) => {
 
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  //   useEffect(() => {
+  //     axios.get('/pages/profile-table', { params: { q: value } }).then(response => {
+  //       setData(response.data)
+  //     })
+  //   }, [value])
+
+  const handleFilter = val => {
+    setValue(val)
   }
 
   return (
@@ -151,11 +172,13 @@ const InvoiceListTable = ({ invoiceData }) => {
       />
       <DataGrid
         autoHeight
-        rowHeight={54}
-        columns={columns}
+        pagination
         rows={invoiceData}
+        rowHeight={60}
+        columns={columns}
+        // checkboxSelection
         disableRowSelectionOnClick
-        pageSizeOptions={[7, 10, 25, 50]}
+        pageSizeOptions={[5, 7, 10]}
         paginationModel={paginationModel}
         onPaginationModelChange={setPaginationModel}
       />
@@ -163,4 +186,4 @@ const InvoiceListTable = ({ invoiceData }) => {
   )
 }
 
-export default InvoiceListTable
+export default ProfileTable

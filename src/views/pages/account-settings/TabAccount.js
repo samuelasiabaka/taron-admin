@@ -38,9 +38,12 @@ const initialData = {
   lastName: 'Doe',
   currency: 'usd',
   firstName: 'John',
+  fullName: 'John Doe',
   language: 'arabic',
   timezone: 'gmt-12',
   country: 'australia',
+  occupation: 'Web Developer',
+  username: 'lucier',
   organization: 'Pixinvent',
   email: 'john.doe@example.com'
 }
@@ -150,8 +153,8 @@ const TabAccount = () => {
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
                     fullWidth
-                    label='First Name'
-                    placeholder='John'
+                    label='Full Name'
+                    placeholder='John Doe'
                     value={formData.firstName}
                     onChange={e => handleFormChange('firstName', e.target.value)}
                   />
@@ -159,8 +162,8 @@ const TabAccount = () => {
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
                     fullWidth
-                    label='Last Name'
-                    placeholder='Doe'
+                    label='Username'
+                    placeholder='lucier'
                     value={formData.lastName}
                     onChange={e => handleFormChange('lastName', e.target.value)}
                   />
@@ -175,15 +178,7 @@ const TabAccount = () => {
                     onChange={e => handleFormChange('email', e.target.value)}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <CustomTextField
-                    fullWidth
-                    label='Organization'
-                    placeholder='Pixinvent'
-                    value={formData.organization}
-                    onChange={e => handleFormChange('organization', e.target.value)}
-                  />
-                </Grid>
+
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
                     fullWidth
@@ -198,8 +193,8 @@ const TabAccount = () => {
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
                     fullWidth
-                    label='Address'
-                    placeholder='Address'
+                    label='Occupation'
+                    placeholder='Occupation'
                     value={formData.address}
                     onChange={e => handleFormChange('address', e.target.value)}
                   />
@@ -207,20 +202,10 @@ const TabAccount = () => {
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
                     fullWidth
-                    label='State'
-                    placeholder='California'
-                    value={formData.state}
-                    onChange={e => handleFormChange('state', e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <CustomTextField
-                    fullWidth
-                    type='number'
-                    label='Zip Code'
-                    placeholder='231465'
-                    value={formData.zipCode}
-                    onChange={e => handleFormChange('zipCode', e.target.value)}
+                    label='Organization'
+                    placeholder='Pixinvent'
+                    value={formData.organization}
+                    onChange={e => handleFormChange('organization', e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -228,7 +213,7 @@ const TabAccount = () => {
                     select
                     fullWidth
                     defaultValue=''
-                    label='Country'
+                    label='Location'
                     SelectProps={{
                       value: formData.country,
                       onChange: e => handleFormChange('country', e.target.value)
@@ -259,7 +244,7 @@ const TabAccount = () => {
                     <MenuItem value='portuguese'>Portuguese</MenuItem>
                   </CustomTextField>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                {/* <Grid item xs={12} sm={6}>
                   <CustomTextField
                     select
                     fullWidth
@@ -288,7 +273,7 @@ const TabAccount = () => {
                     <MenuItem value='gmt-04'>(GMT-04:00) Atlantic Time (Canada)</MenuItem>
                     <MenuItem value='gmt-04-clp'>(GMT-04:00) Caracas, La Paz</MenuItem>
                   </CustomTextField>
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
                     select
@@ -322,7 +307,7 @@ const TabAccount = () => {
       </Grid>
 
       {/* Delete Account Card */}
-      <Grid item xs={12}>
+      {/* <Grid item xs={12}>
         <Card>
           <CardHeader title='Delete Account' />
           <CardContent>
@@ -364,10 +349,10 @@ const TabAccount = () => {
             </form>
           </CardContent>
         </Card>
-      </Grid>
+      </Grid> */}
 
       {/* Deactivate Account Dialogs */}
-      <Dialog fullWidth maxWidth='xs' open={open} onClose={handleClose}>
+      {/* <Dialog fullWidth maxWidth='xs' open={open} onClose={handleClose}>
         <DialogContent
           sx={{
             pb: theme => `${theme.spacing(6)} !important`,
@@ -403,7 +388,7 @@ const TabAccount = () => {
             Cancel
           </Button>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
       <Dialog fullWidth maxWidth='xs' open={secondDialogOpen} onClose={handleSecondDialogClose}>
         <DialogContent
           sx={{

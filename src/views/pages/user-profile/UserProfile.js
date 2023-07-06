@@ -113,16 +113,7 @@ const UserProfile = ({ tab, data }) => {
                     label={
                       <Box sx={{ display: 'flex', alignItems: 'center', ...(!hideText && { '& svg': { mr: 2 } }) }}>
                         <Icon fontSize='1.125rem' icon='tabler:user-check' />
-                        {!hideText && 'Profile'}
-                      </Box>
-                    }
-                  />
-                  <Tab
-                    value='teams'
-                    label={
-                      <Box sx={{ display: 'flex', alignItems: 'center', ...(!hideText && { '& svg': { mr: 2 } }) }}>
-                        <Icon fontSize='1.125rem' icon='tabler:users' />
-                        {!hideText && 'Teams'}
+                        {!hideText && 'Account'}
                       </Box>
                     }
                   />
@@ -130,8 +121,26 @@ const UserProfile = ({ tab, data }) => {
                     value='projects'
                     label={
                       <Box sx={{ display: 'flex', alignItems: 'center', ...(!hideText && { '& svg': { mr: 2 } }) }}>
-                        <Icon fontSize='1.125rem' icon='tabler:layout-grid' />
-                        {!hideText && 'Projects'}
+                        <Icon fontSize='1.125rem' icon='tabler:lock' />
+                        {!hideText && 'Security'}
+                      </Box>
+                    }
+                  />
+                  <Tab
+                    value='teams'
+                    label={
+                      <Box sx={{ display: 'flex', alignItems: 'center', ...(!hideText && { '& svg': { mr: 2 } }) }}>
+                        <Icon fontSize='1.125rem' icon='tabler:wallet' />
+                        {!hideText && 'Wallet & Earning'}
+                      </Box>
+                    }
+                  />
+                  <Tab
+                    value='projects'
+                    label={
+                      <Box sx={{ display: 'flex', alignItems: 'center', ...(!hideText && { '& svg': { mr: 2 } }) }}>
+                        <Icon fontSize='1.125rem' icon='tabler:bell' />
+                        {!hideText && 'Notifications'}
                       </Box>
                     }
                   />
