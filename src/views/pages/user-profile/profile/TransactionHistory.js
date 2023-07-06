@@ -119,7 +119,6 @@ const columns = [
 const ProfileTable = ({ invoiceData }) => {
   const [anchorEl, setAnchorEl] = useState(null)
   // ** State
-  //   const [data, setData] = useState([])
   const [value, setValue] = useState('')
   const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 7 })
 
@@ -133,12 +132,6 @@ const ProfileTable = ({ invoiceData }) => {
   const handleClose = () => {
     setAnchorEl(null)
   }
-
-  //   useEffect(() => {
-  //     axios.get('/pages/profile-table', { params: { q: value } }).then(response => {
-  //       setData(response.data)
-  //     })
-  //   }, [value])
 
   const handleFilter = val => {
     setValue(val)
@@ -176,7 +169,6 @@ const ProfileTable = ({ invoiceData }) => {
         rows={invoiceData}
         rowHeight={60}
         columns={columns}
-        // checkboxSelection
         disableRowSelectionOnClick
         pageSizeOptions={[5, 7, 10]}
         paginationModel={paginationModel}
