@@ -92,7 +92,7 @@ const UserProfile = ({ tab, data }) => {
     security: <Security data={data} />,
     wallet: <Wallet data={data} />,
     notification: <Notification data={data} />,
-    teams: <Teams data={data} />,
+    // teams: <Teams data={data} />,
     // wallet: <Teams data={data} />,
     // projects: <Projects data={data} />,
     connections: <Connections data={data} />

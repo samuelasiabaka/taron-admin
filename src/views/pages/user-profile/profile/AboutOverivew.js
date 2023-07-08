@@ -1,3 +1,5 @@
+// ** Next Import
+import { useRouter } from 'next/router'
 // ** MUI Components
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -7,6 +9,7 @@ import CardContent from '@mui/material/CardContent'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import { Button } from '@mui/material'
 
 const renderList = arr => {
   if (arr && arr.length) {
@@ -70,6 +73,8 @@ const renderTeams = arr => {
 }
 
 const AboutOverivew = props => {
+  // ** Hooks
+  const router = useRouter()
   const { teams, about, contacts, overview } = props
 
   return (
@@ -96,6 +101,16 @@ const AboutOverivew = props => {
               <Typography sx={{ color: 'text.secondary' }}>
                 John works as a Data Analyst at Riley Freeman LLC
               </Typography>
+              <Box sx={{ mt: 6, display: 'flex', justifyContent: 'flex-end' }}>
+                <Button
+                  variant='contained'
+                  onClick={() => {
+                    router.push(`/pages/account-settings/account`)
+                  }}
+                >
+                  Edit
+                </Button>
+              </Box>
             </Box>
           </CardContent>
         </Card>

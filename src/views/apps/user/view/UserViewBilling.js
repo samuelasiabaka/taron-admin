@@ -210,35 +210,7 @@ const UserViewBilling = () => {
                     Balance: $5,000
                   </Typography>
                 </Box>
-                {/* <Box sx={{ mb: 3 }}>
-                  <Typography sx={{ fontWeight: 500 }}>Active until Dec 09, 2023</Typography>
-                  <Typography variant='body2'>We will send you a notification upon Subscription expiration</Typography>
-                </Box>
-                <div>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Typography sx={{ mr: 2, fontWeight: 500 }}>$199 Per Month</Typography>
-                    <CustomChip rounded skin='light' size='small' label='Popular' color='primary' />
-                  </Box>
-                  <Typography variant='body2'>Standard plan for small to medium businesses</Typography>
-                </div> */}
               </Grid>
-
-              {/* <Grid item xs={12} md={6} sx={{ mt: [4, 4, 0] }}>
-                <Alert icon={false} severity='warning' sx={{ mb: 4 }}>
-                  <AlertTitle
-                    sx={{ fontWeight: 500, fontSize: '1.125rem', mb: theme => `${theme.spacing(2.5)} !important` }}
-                  >
-                    We need your attention!
-                  </AlertTitle>
-                  Your plan requires updates
-                </Alert>
-                <Box sx={{ display: 'flex', mb: 1.5, justifyContent: 'space-between' }}>
-                  <Typography sx={{ fontWeight: 500 }}>Days</Typography>
-                  <Typography sx={{ fontWeight: 500 }}>24 of 30 Days</Typography>
-                </Box>
-                <LinearProgress value={80} variant='determinate' sx={{ mb: 1.5, height: 10 }} />
-                <Typography sx={{ color: 'text.secondary' }}>6 days remaining</Typography>
-              </Grid> */}
 
               <Grid item xs={12} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start' }}>
                 <Button variant='contained' onClick={handleUpgradePlansClickOpen} sx={{ mr: 4, mb: [2, 0] }}>

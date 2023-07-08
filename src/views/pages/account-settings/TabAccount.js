@@ -43,7 +43,7 @@ const initialData = {
   timezone: 'gmt-12',
   country: 'australia',
   occupation: 'Web Developer',
-  username: 'lucier',
+  username: 'johndoe',
   organization: 'Pixinvent',
   email: 'john.doe@example.com'
 }
@@ -155,8 +155,8 @@ const TabAccount = () => {
                     fullWidth
                     label='Full Name'
                     placeholder='John Doe'
-                    value={formData.firstName}
-                    onChange={e => handleFormChange('firstName', e.target.value)}
+                    value={formData.fullName}
+                    onChange={e => handleFormChange('fullNName', e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -164,8 +164,8 @@ const TabAccount = () => {
                     fullWidth
                     label='Username'
                     placeholder='lucier'
-                    value={formData.lastName}
-                    onChange={e => handleFormChange('lastName', e.target.value)}
+                    value={formData.username}
+                    onChange={e => handleFormChange('username', e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -195,8 +195,8 @@ const TabAccount = () => {
                     fullWidth
                     label='Occupation'
                     placeholder='Occupation'
-                    value={formData.address}
-                    onChange={e => handleFormChange('address', e.target.value)}
+                    value={formData.occupation}
+                    onChange={e => handleFormChange('occupation', e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -210,21 +210,12 @@ const TabAccount = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
-                    select
                     fullWidth
-                    defaultValue=''
                     label='Location'
-                    SelectProps={{
-                      value: formData.country,
-                      onChange: e => handleFormChange('country', e.target.value)
-                    }}
-                  >
-                    <MenuItem value='australia'>Australia</MenuItem>
-                    <MenuItem value='canada'>Canada</MenuItem>
-                    <MenuItem value='france'>France</MenuItem>
-                    <MenuItem value='united-kingdom'>United Kingdom</MenuItem>
-                    <MenuItem value='united-states'>United States</MenuItem>
-                  </CustomTextField>
+                    placeholder='Location'
+                    value={formData.country}
+                    onChange={e => handleFormChange('country', e.target.value)}
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
@@ -244,36 +235,6 @@ const TabAccount = () => {
                     <MenuItem value='portuguese'>Portuguese</MenuItem>
                   </CustomTextField>
                 </Grid>
-                {/* <Grid item xs={12} sm={6}>
-                  <CustomTextField
-                    select
-                    fullWidth
-                    defaultValue=''
-                    label='Timezone'
-                    SelectProps={{
-                      value: formData.timezone,
-                      onChange: e => handleFormChange('timezone', e.target.value)
-                    }}
-                  >
-                    <MenuItem value='gmt-12'>(GMT-12:00) International Date Line West</MenuItem>
-                    <MenuItem value='gmt-11'>(GMT-11:00) Midway Island, Samoa</MenuItem>
-                    <MenuItem value='gmt-10'>(GMT-10:00) Hawaii</MenuItem>
-                    <MenuItem value='gmt-09'>(GMT-09:00) Alaska</MenuItem>
-                    <MenuItem value='gmt-08'>(GMT-08:00) Pacific Time (US & Canada)</MenuItem>
-                    <MenuItem value='gmt-08-baja'>(GMT-08:00) Tijuana, Baja California</MenuItem>
-                    <MenuItem value='gmt-07'>(GMT-07:00) Chihuahua, La Paz, Mazatlan</MenuItem>
-                    <MenuItem value='gmt-07-mt'>(GMT-07:00) Mountain Time (US & Canada)</MenuItem>
-                    <MenuItem value='gmt-06'>(GMT-06:00) Central America</MenuItem>
-                    <MenuItem value='gmt-06-ct'>(GMT-06:00) Central Time (US & Canada)</MenuItem>
-                    <MenuItem value='gmt-06-mc'>(GMT-06:00) Guadalajara, Mexico City, Monterrey</MenuItem>
-                    <MenuItem value='gmt-06-sk'>(GMT-06:00) Saskatchewan</MenuItem>
-                    <MenuItem value='gmt-05'>(GMT-05:00) Bogota, Lima, Quito, Rio Branco</MenuItem>
-                    <MenuItem value='gmt-05-et'>(GMT-05:00) Eastern Time (US & Canada)</MenuItem>
-                    <MenuItem value='gmt-05-ind'>(GMT-05:00) Indiana (East)</MenuItem>
-                    <MenuItem value='gmt-04'>(GMT-04:00) Atlantic Time (Canada)</MenuItem>
-                    <MenuItem value='gmt-04-clp'>(GMT-04:00) Caracas, La Paz</MenuItem>
-                  </CustomTextField>
-                </Grid> */}
                 <Grid item xs={12} sm={6}>
                   <CustomTextField
                     select
@@ -306,53 +267,7 @@ const TabAccount = () => {
         </Card>
       </Grid>
 
-      {/* Delete Account Card */}
-      {/* <Grid item xs={12}>
-        <Card>
-          <CardHeader title='Delete Account' />
-          <CardContent>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Box sx={{ mb: 4 }}>
-                <FormControl>
-                  <Controller
-                    name='checkbox'
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <FormControlLabel
-                        label='I confirm my account deactivation'
-                        sx={{ '& .MuiTypography-root': { color: errors.checkbox ? 'error.main' : 'text.secondary' } }}
-                        control={
-                          <Checkbox
-                            {...field}
-                            size='small'
-                            name='validation-basic-checkbox'
-                            sx={errors.checkbox ? { color: 'error.main' } : null}
-                          />
-                        }
-                      />
-                    )}
-                  />
-                  {errors.checkbox && (
-                    <FormHelperText
-                      id='validation-basic-checkbox'
-                      sx={{ mx: 0, color: 'error.main', fontSize: theme => theme.typography.body2.fontSize }}
-                    >
-                      Please confirm you want to delete account
-                    </FormHelperText>
-                  )}
-                </FormControl>
-              </Box>
-              <Button variant='contained' color='error' type='submit' disabled={errors.checkbox !== undefined}>
-                Deactivate Account
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </Grid> */}
-
-      {/* Deactivate Account Dialogs */}
-      {/* <Dialog fullWidth maxWidth='xs' open={open} onClose={handleClose}>
+      <Dialog fullWidth maxWidth='xs' open={open} onClose={handleClose}>
         <DialogContent
           sx={{
             pb: theme => `${theme.spacing(6)} !important`,
@@ -388,7 +303,7 @@ const TabAccount = () => {
             Cancel
           </Button>
         </DialogActions>
-      </Dialog> */}
+      </Dialog>
       <Dialog fullWidth maxWidth='xs' open={secondDialogOpen} onClose={handleSecondDialogClose}>
         <DialogContent
           sx={{

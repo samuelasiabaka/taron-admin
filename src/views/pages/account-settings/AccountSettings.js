@@ -26,6 +26,8 @@ import TabSecurity from 'src/views/pages/account-settings/TabSecurity'
 import TabConnections from 'src/views/pages/account-settings/TabConnections'
 import TabNotifications from 'src/views/pages/account-settings/TabNotifications'
 
+import Profile from 'src/views/pages/user-profile/profile'
+
 const TabList = styled(MuiTabList)(({ theme }) => ({
   border: '0 !important',
   '&, & .MuiTabs-scroller': {
@@ -117,8 +119,8 @@ const AccountSettings = ({ tab, apiPricingPlanData }) => {
                   value='billing'
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center', ...(!hideText && { '& svg': { mr: 2 } }) }}>
-                      <Icon fontSize='1.25rem' icon='tabler:file-text' />
-                      {!hideText && 'Billing'}
+                      <Icon fontSize='1.125rem' icon='tabler:wallet' />
+                      {!hideText && 'Wallet & Earning'}
                     </Box>
                   }
                 />

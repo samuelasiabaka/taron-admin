@@ -17,8 +17,8 @@ import axios from 'axios'
 import Icon from 'src/@core/components/icon'
 
 const ProfilePicture = styled('img')(({ theme }) => ({
-  width: 108,
-  height: 108,
+  width: 128,
+  height: 128,
   borderRadius: theme.shape.borderRadius,
   border: `4px solid ${theme.palette.common.white}`,
   [theme.breakpoints.down('md')]: {
@@ -56,7 +56,13 @@ const UserProfileHeader = () => {
           justifyContent: { xs: 'center', md: 'flex-start' }
         }}
       >
-        <ProfilePicture src={data.profileImg} alt='profile-picture' />
+        <ProfilePicture
+          src={data.profileImg}
+          alt='profile-picture'
+          onClick={() => {
+            console.log('click')
+          }}
+        />
         <Box
           sx={{
             width: '100%',
@@ -92,10 +98,13 @@ const UserProfileHeader = () => {
               </Box>
             </Box>
           </Box>
-          <Button variant='contained' sx={{ '& svg': { mr: 2 } }}>
-            <Icon icon='tabler:check' fontSize='1.125rem' />
-            Connected
-          </Button>
+          <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: 'text.secondary' } }}>
+            <Icon fontSize='1.25rem' icon='tabler:check' />
+            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', '& svg': { mr: 1.5, color: 'text.secondary' } }}>
+              <Typography sx={{ color: 'text.secondary' }}>Status: </Typography>
+              <Typography sx={{ color: '#34a853' }}>Active</Typography>
+            </Box>
+          </Box>
         </Box>
       </CardContent>
     </Card>

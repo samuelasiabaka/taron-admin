@@ -25,7 +25,7 @@ const ProfileTab = ({ data }) => {
             <EventsTable />
           </Grid>
           <Grid item xs={12}>
-            <ProjectsTable />
+            <TransactionHistory />
           </Grid>
         </Grid>
       </Grid>
