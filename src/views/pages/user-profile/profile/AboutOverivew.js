@@ -1,13 +1,11 @@
-// ** Next Import
 import { useRouter } from 'next/router'
-// ** MUI Components
+
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// ** Icon Imports
 import Icon from 'src/@core/components/icon'
 import { Button } from '@mui/material'
 
@@ -73,7 +71,6 @@ const renderTeams = arr => {
 }
 
 const AboutOverivew = props => {
-  // ** Hooks
   const router = useRouter()
   const { teams, about, contacts, overview } = props
 

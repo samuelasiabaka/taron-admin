@@ -93,8 +93,6 @@ const UserProfile = ({ tab, data }) => {
     wallet: <Wallet data={data} />,
     notification: <Notification data={data} />,
     teams: <Teams data={data} />,
-    // wallet: <Teams data={data} />,
-    // projects: <Projects data={data} />,
     connections: <Connections data={data} />
   }
 
