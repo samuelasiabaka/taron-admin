@@ -7,15 +7,21 @@ import Link from 'next/link'
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
+import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
 import Tooltip from '@mui/material/Tooltip'
 import { styled } from '@mui/material/styles'
+import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import { DataGrid } from '@mui/x-data-grid'
+
+import DialogTitle from '@mui/material/DialogTitle'
+import DialogContent from '@mui/material/DialogContent'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
@@ -35,6 +41,7 @@ import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 import OptionsMenu from 'src/@core/components/option-menu'
 import CustomTextField from 'src/@core/components/mui/text-field'
+import UserSubscriptionDialog from 'src/views/apps/user/view/UserSubscriptionDialog'
 
 // ** Styled component for the link in the dataTable
 const LinkStyled = styled(Link)(({ theme }) => ({
@@ -43,14 +50,6 @@ const LinkStyled = styled(Link)(({ theme }) => ({
 }))
 
 // ** Vars
-const invoiceStatusObj = {
-  Paid: { color: 'success', icon: 'tabler:circle-half-2' },
-  Sent: { color: 'secondary', icon: 'tabler:circle-check' },
-  Draft: { color: 'primary', icon: 'tabler:device-floppy' },
-  'Past Due': { color: 'error', icon: 'tabler:alert-circle' },
-  Downloaded: { color: 'info', icon: 'tabler:arrow-down-circle' },
-  'Partial Payment': { color: 'warning', icon: 'tabler:chart-pie' }
-}
 
 // ** renders client column
 const renderClient = row => {
@@ -73,53 +72,25 @@ const defaultColumns = [
   {
     flex: 0.1,
     field: 'id',
-    minWidth: 100,
+    minWidth: 90,
     headerName: 'ID',
     renderCell: ({ row }) => (
       <Typography component={LinkStyled} href={`/apps/invoice/preview/${row.id}`}>{`#${row.id}`}</Typography>
     )
   },
   {
-    flex: 0.1,
-    minWidth: 80,
-    field: 'invoiceStatus',
-    renderHeader: () => <Icon fontSize='1.125rem' icon='tabler:trending-up' />,
-    renderCell: ({ row }) => {
-      const { dueDate, balance, invoiceStatus } = row
-      const color = invoiceStatusObj[invoiceStatus] ? invoiceStatusObj[invoiceStatus].color : 'primary'
-
-      return (
-        <Tooltip
-          title={
-            <div>
-              <Typography variant='caption' sx={{ color: 'common.white', fontWeight: 600 }}>
-                {invoiceStatus}
-              </Typography>
-              <br />
-              <Typography variant='caption' sx={{ color: 'common.white', fontWeight: 600 }}>
-                Balance:
-              </Typography>{' '}
-              {balance}
-              <br />
-              <Typography variant='caption' sx={{ color: 'common.white', fontWeight: 600 }}>
-                Due Date:
-              </Typography>{' '}
-              {dueDate}
-            </div>
-          }
-        >
-          <CustomAvatar skin='light' color={color} sx={{ width: '1.875rem', height: '1.875rem' }}>
-            <Icon icon={invoiceStatusObj[invoiceStatus].icon} />
-          </CustomAvatar>
-        </Tooltip>
-      )
-    }
+    flex: 0.15,
+    minWidth: 140,
+    field: 'issuedDate',
+    headerName: 'Date/Time',
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.issuedDate}</Typography>
   },
+
   {
     flex: 0.25,
     field: 'name',
-    minWidth: 320,
-    headerName: 'Client',
+    minWidth: 280,
+    headerName: 'Event',
     renderCell: ({ row }) => {
       const { name, companyEmail } = row
 
@@ -140,18 +111,19 @@ const defaultColumns = [
   },
   {
     flex: 0.1,
+    minWidth: 130,
+    field: 'invoiceStatus',
+    headerName: 'Remark',
+    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>VIP Tickets</Typography>
+  },
+  {
+    flex: 0.1,
     minWidth: 100,
     field: 'total',
     headerName: 'Total',
     renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{`$${row.total || 0}`}</Typography>
   },
-  {
-    flex: 0.15,
-    minWidth: 140,
-    field: 'issuedDate',
-    headerName: 'Issued Date',
-    renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.issuedDate}</Typography>
-  },
+
   {
     flex: 0.1,
     minWidth: 100,
@@ -183,6 +155,9 @@ const BillingHistoryTable = () => {
   const [value, setValue] = useState('')
   const [statusValue, setStatusValue] = useState('')
   const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 10 })
+  const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false)
+  const [openUpgradePlans, setOpenUpgradePlans] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null)
 
   // ** Hooks
   const dispatch = useDispatch()
@@ -196,12 +171,27 @@ const BillingHistoryTable = () => {
     )
   }, [dispatch, statusValue, value])
 
+  const handleUpgradePlansClickOpen = () => setOpenUpgradePlans(true)
+  const handleUpgradePlansClose = () => setOpenUpgradePlans(false)
+  const handleBlur = () => setFocus(undefined)
+
   const handleFilter = val => {
     setValue(val)
   }
 
   const handleStatusValue = e => {
     setStatusValue(e.target.value)
+  }
+
+  // ** Var
+  const open = Boolean(anchorEl)
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
   }
 
   const columns = [
@@ -250,7 +240,74 @@ const BillingHistoryTable = () => {
 
   return (
     <Card>
-      <CardHeader title='Billing History' />
+      <CardHeader title='Earnings' />
+      <>
+        <CardContent>
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={6}>
+              <Box sx={{ mb: 3 }}>
+                <Typography sx={{ fontWeight: 700, color: theme => theme.palette.primary.main }}>
+                  Balance: $50,000
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </CardContent>
+
+        <UserSubscriptionDialog open={subscriptionDialogOpen} setOpen={setSubscriptionDialogOpen} />
+
+        <Dialog
+          open={openUpgradePlans}
+          onClose={handleUpgradePlansClose}
+          aria-labelledby='user-view-plans'
+          aria-describedby='user-view-plans-description'
+          sx={{ '& .MuiPaper-root': { width: '100%', maxWidth: 650 } }}
+        >
+          <DialogTitle
+            id='user-view-plans'
+            sx={{
+              textAlign: 'center',
+              fontSize: '1.625rem !important',
+              px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`],
+              pt: theme => [`${theme.spacing(8)} !important`, `${theme.spacing(12.5)} !important`]
+            }}
+          >
+            Withdraw Money
+          </DialogTitle>
+
+          <DialogContent
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'column',
+              gap: 8,
+              overflow: 'hidden',
+              flexWrap: ['wrap', 'nowrap'],
+              pt: theme => `${theme.spacing(2)} !important`,
+              pb: theme => `${theme.spacing(8)} !important`,
+              px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`]
+            }}
+          >
+            <CustomTextField
+              fullWidth
+              autoFocus
+              label='Amount'
+              type='number'
+              placeholder='0.00'
+              sx={{ mr: [0, 3], mb: [3, 0] }}
+            />
+            <CustomTextField select fullWidth label='Currency Type' defaultValue='us' sx={{ mr: [0, 3], mb: [3, 0] }}>
+              <MenuItem value='us'>$ US Dollars</MenuItem>
+              <MenuItem value='ngn'>₦ NGN Naira</MenuItem>
+              <MenuItem value='gbp'>£ GBP Pounds</MenuItem>
+              <MenuItem value='eu'>€ EU Euro</MenuItem>
+            </CustomTextField>
+            <Button variant='contained' sx={{ minWidth: ['100%', 0], mt: 4 }}>
+              Done
+            </Button>
+          </DialogContent>
+        </Dialog>
+      </>
       <CardContent sx={{ pb: 4 }}>
         <Box
           sx={{
@@ -261,9 +318,8 @@ const BillingHistoryTable = () => {
             justifyContent: 'space-between'
           }}
         >
-          <Button component={Link} variant='contained' href='/apps/invoice/add' sx={{ '& svg': { mr: 2 } }}>
-            <Icon fontSize='1.125rem' icon='tabler:plus' />
-            Create Invoice
+          <Button variant='contained' onClick={handleUpgradePlansClickOpen} sx={{ mr: 4, mb: [2, 0] }}>
+            Payout
           </Button>
           <Box
             sx={{
@@ -274,7 +330,7 @@ const BillingHistoryTable = () => {
             }}
           >
             <CustomTextField value={value} placeholder='Search Invoice' onChange={e => handleFilter(e.target.value)} />
-            <CustomTextField
+            {/* <CustomTextField
               select
               sx={{ pr: 4, '& .MuiFilledInput-input.MuiSelect-select': { width: '8rem !important' } }}
               SelectProps={{ displayEmpty: true, value: statusValue, onChange: e => handleStatusValue(e) }}
@@ -286,7 +342,25 @@ const BillingHistoryTable = () => {
               <MenuItem value='partial payment'>Partial Payment</MenuItem>
               <MenuItem value='past due'>Past Due</MenuItem>
               <MenuItem value='sent'>Sent</MenuItem>
-            </CustomTextField>
+            </CustomTextField> */}
+            <>
+              <Button
+                variant='tonal'
+                color='secondary'
+                aria-haspopup='true'
+                onClick={handleClick}
+                aria-expanded={open ? 'true' : undefined}
+                endIcon={<Icon icon='tabler:chevron-down' />}
+                aria-controls={open ? 'user-view-overview-export' : undefined}
+              >
+                Export
+              </Button>
+              <Menu open={open} anchorEl={anchorEl} onClose={handleClose} id='user-view-overview-export'>
+                <MenuItem onClick={handleClose}>PDF</MenuItem>
+                <MenuItem onClick={handleClose}>XLSX</MenuItem>
+                <MenuItem onClick={handleClose}>CSV</MenuItem>
+              </Menu>
+            </>
           </Box>
         </Box>
       </CardContent>

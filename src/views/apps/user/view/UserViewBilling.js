@@ -216,9 +216,6 @@ const UserViewBilling = () => {
                 <Button variant='contained' onClick={handleUpgradePlansClickOpen} sx={{ mr: 4, mb: [2, 0] }}>
                   Add funds
                 </Button>
-                {/* <Button variant='tonal' color='error' onClick={() => setSubscriptionDialogOpen(true)}>
-                  Cancel Subscription
-                </Button> */}
               </Grid>
             </Grid>
           </CardContent>
@@ -243,12 +240,6 @@ const UserViewBilling = () => {
             >
               Add Money
             </DialogTitle>
-
-            {/* <DialogContent sx={{ px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`] }}>
-              <DialogContentText sx={{ textAlign: 'center' }} id='user-view-plans-description'>
-                Choose the best plan for the user.
-              </DialogContentText>
-            </DialogContent> */}
 
             <DialogContent
               sx={{
@@ -281,76 +272,6 @@ const UserViewBilling = () => {
                 Done
               </Button>
             </DialogContent>
-            {/* <DialogContent
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                flexWrap: ['wrap', 'nowrap'],
-                pt: theme => `${theme.spacing(2)} !important`,
-                pb: theme => `${theme.spacing(8)} !important`,
-                px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`]
-              }}
-            >
-              <CustomTextField select fullWidth label='Currency Type' defaultValue='us' sx={{ mr: [0, 3], mb: [3, 0] }}>
-                <MenuItem value='us'>$ US Dollars</MenuItem>
-                <MenuItem value='ngn'>₦ NGN Naira</MenuItem>
-                <MenuItem value='gbp'>£ GBP Pounds</MenuItem>
-                <MenuItem value='eu'>€ EU Euro</MenuItem>
-              </CustomTextField>
-            </DialogContent>
-            <DialogContent
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                flexWrap: ['wrap', 'nowrap'],
-                pt: theme => `${theme.spacing(2)} !important`,
-                pb: theme => `${theme.spacing(8)} !important`,
-                px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`]
-              }}
-            >
-              <Button variant='contained' sx={{ minWidth: ['100%', 0], mt: 4 }}>
-                Done
-              </Button>
-            </DialogContent> */}
-
-            {/* <DialogContent
-              sx={{
-                pt: theme => [`${theme.spacing(8)} !important`, `${theme.spacing(8)} !important`],
-                px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`],
-                pb: theme => [`${theme.spacing(8)} !important`, `${theme.spacing(12.5)} !important`]
-              }}
-            >
-              <Typography variant='h6' sx={{ mb: 2, color: theme => theme.palette.text.secondary }}>
-                User current plan is standard plan
-              </Typography>
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  flexWrap: ['wrap', 'nowrap'],
-                  justifyContent: 'space-between'
-                }}
-              >
-                <Box sx={{ mr: 3, display: 'flex', ml: 2.4, position: 'relative' }}>
-                  <Sup>$</Sup>
-                  <Typography
-                    variant='h3'
-                    sx={{
-                      mb: -1.2,
-                      lineHeight: 1,
-                      color: 'primary.main',
-                      fontSize: '3rem !important'
-                    }}
-                  >
-                    99
-                  </Typography>
-                  <Sub>/ month</Sub>
-                </Box>
-                <Button color='error' variant='tonal' sx={{ mt: 2 }} onClick={() => setSubscriptionDialogOpen(true)}>
-                  Cancel Subscription
-                </Button>
-              </Box>
-            </DialogContent> */}
           </Dialog>
         </Card>
       </Grid>
