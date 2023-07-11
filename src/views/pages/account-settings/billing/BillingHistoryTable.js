@@ -42,6 +42,7 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 import OptionsMenu from 'src/@core/components/option-menu'
 import CustomTextField from 'src/@core/components/mui/text-field'
 import UserSubscriptionDialog from 'src/views/apps/user/view/UserSubscriptionDialog'
+import BillingGraph from './BillingGraph'
 
 // ** Styled component for the link in the dataTable
 const LinkStyled = styled(Link)(({ theme }) => ({
@@ -120,7 +121,7 @@ const defaultColumns = [
     flex: 0.1,
     minWidth: 100,
     field: 'total',
-    headerName: 'Total',
+    headerName: 'Amount',
     renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{`$${row.total || 0}`}</Typography>
   },
 
@@ -329,7 +330,7 @@ const BillingHistoryTable = () => {
               alignItems: 'center'
             }}
           >
-            <CustomTextField value={value} placeholder='Search Invoice' onChange={e => handleFilter(e.target.value)} />
+            <CustomTextField value={value} placeholder='Search' onChange={e => handleFilter(e.target.value)} />
             {/* <CustomTextField
               select
               sx={{ pr: 4, '& .MuiFilledInput-input.MuiSelect-select': { width: '8rem !important' } }}
@@ -363,6 +364,9 @@ const BillingHistoryTable = () => {
             </>
           </Box>
         </Box>
+      </CardContent>
+      <CardContent sx={{ pb: 4 }}>
+        <BillingGraph />
       </CardContent>
       <DataGrid
         autoHeight

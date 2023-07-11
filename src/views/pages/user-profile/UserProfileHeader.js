@@ -49,7 +49,7 @@ const UserProfileHeader = () => {
       <CardContent
         sx={{
           pt: 0,
-          mt: -8,
+          mt: -15,
           display: 'flex',
           alignItems: 'flex-end',
           flexWrap: { xs: 'wrap', md: 'nowrap' },

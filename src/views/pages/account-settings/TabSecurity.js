@@ -22,6 +22,7 @@ import CustomChip from 'src/@core/components/mui/chip'
 import CreateApiKey from 'src/views/pages/account-settings/security/CreateApiKey'
 import ChangePasswordCard from 'src/views/pages/account-settings/security/ChangePasswordCard'
 import TwoFactorAuthentication from 'src/views/pages/account-settings/security/TwoFactorAuthentication'
+import UserViewSecurity from 'src/views/apps/user/view/UserViewSecurity'
 
 const apiKeyList = [
   {
@@ -114,104 +115,7 @@ const recentDeviceData = [
 ]
 
 const TabSecurity = () => {
-  return (
-    <Grid container spacing={6}>
-      <Grid item xs={12}>
-        <ChangePasswordCard />
-      </Grid>
-      <Grid item xs={12}>
-        <TwoFactorAuthentication />
-      </Grid>
-      <Grid item xs={12}>
-        <CreateApiKey />
-      </Grid>
-
-      {/* API Key List & Access Card*/}
-      <Grid item xs={12}>
-        <Card>
-          <CardHeader title='API Key List & Access' />
-          <CardContent>
-            <Typography sx={{ mb: 4, color: 'text.secondary' }}>
-              An API key is a simple encrypted string that identifies an application without any principal. They are
-              useful for accessing public data anonymously, and are used to associate API requests with your project for
-              quota and billing.
-            </Typography>
-            {apiKeyList.map(item => {
-              return (
-                <Box
-                  key={item.key}
-                  sx={{ p: 4, borderRadius: 1, backgroundColor: 'action.hover', '&:not(:last-child)': { mb: 4 } }}
-                >
-                  <Box sx={{ mb: 4, display: 'flex', alignItems: 'center' }}>
-                    <Typography variant='h4' sx={{ mr: 4 }}>
-                      {item.title}
-                    </Typography>
-                    <CustomChip
-                      rounded
-                      size='small'
-                      skin='light'
-                      color='primary'
-                      label={item.access}
-                      sx={{ textTransform: 'uppercase' }}
-                    />
-                  </Box>
-                  <Box sx={{ mb: 4, display: 'flex', alignItems: 'center' }}>
-                    <Typography sx={{ mr: 2.5, color: 'text.secondary', fontWeight: 500 }}>{item.key}</Typography>
-                    <Box component='span' sx={{ display: 'flex', cursor: 'pointer', color: 'text.disabled' }}>
-                      <Icon icon='tabler:copy' />
-                    </Box>
-                  </Box>
-                  <Typography sx={{ color: 'text.disabled' }}>Created on {item.date}</Typography>
-                </Box>
-              )
-            })}
-          </CardContent>
-        </Card>
-      </Grid>
-
-      {/* Recent Devices Card*/}
-      <Grid item xs={12}>
-        <Card>
-          <CardHeader title='Recent Devices' />
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell sx={{ whiteSpace: 'nowrap' }}>Browser</TableCell>
-                  <TableCell sx={{ whiteSpace: 'nowrap' }}>Device</TableCell>
-                  <TableCell sx={{ whiteSpace: 'nowrap' }}>Location</TableCell>
-                  <TableCell sx={{ whiteSpace: 'nowrap' }}>Recent Activities</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody sx={{ '& .MuiTableCell-root': { py: theme => `${theme.spacing(2.5)} !important` } }}>
-                {recentDeviceData.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell>
-                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        {row.browserIcon}
-                        <Typography sx={{ whiteSpace: 'nowrap', color: 'text.secondary' }}>
-                          {row.browserName}
-                        </Typography>
-                      </Box>
-                    </TableCell>
-                    <TableCell>
-                      <Typography sx={{ whiteSpace: 'nowrap', color: 'text.secondary' }}>{row.device}</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography sx={{ whiteSpace: 'nowrap', color: 'text.secondary' }}>{row.location}</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography sx={{ whiteSpace: 'nowrap', color: 'text.secondary' }}>{row.date}</Typography>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Card>
-      </Grid>
-    </Grid>
-  )
+  return <UserViewSecurity />
 }
 
 export default TabSecurity
