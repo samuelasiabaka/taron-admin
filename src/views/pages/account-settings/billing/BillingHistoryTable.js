@@ -331,19 +331,6 @@ const BillingHistoryTable = () => {
             }}
           >
             <CustomTextField value={value} placeholder='Search' onChange={e => handleFilter(e.target.value)} />
-            {/* <CustomTextField
-              select
-              sx={{ pr: 4, '& .MuiFilledInput-input.MuiSelect-select': { width: '8rem !important' } }}
-              SelectProps={{ displayEmpty: true, value: statusValue, onChange: e => handleStatusValue(e) }}
-            >
-              <MenuItem value=''>Select Status</MenuItem>
-              <MenuItem value='downloaded'>Downloaded</MenuItem>
-              <MenuItem value='draft'>Draft</MenuItem>
-              <MenuItem value='paid'>Paid</MenuItem>
-              <MenuItem value='partial payment'>Partial Payment</MenuItem>
-              <MenuItem value='past due'>Past Due</MenuItem>
-              <MenuItem value='sent'>Sent</MenuItem>
-            </CustomTextField> */}
             <>
               <Button
                 variant='tonal'

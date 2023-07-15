@@ -37,11 +37,11 @@ const navigation = () => {
         },
         {
           title: 'Reporting/Flagging',
-          path: '/apps/invoice/preview'
+          path: '/apps/reporting'
         },
         {
           title: 'Bans and Suspension',
-          path: '/apps/invoice/edit'
+          path: '/apps/bans'
         }
       ]
     },
