@@ -46,13 +46,6 @@ const columns = [
     headerName: 'Report',
     renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>${row.total || 0}</Typography>
   },
-  // {
-  //   flex: 0.2,
-  //   minWidth: 125,
-  //   field: 'issuedDate',
-  //   headerName: 'Date',
-  //   renderCell: ({ row }) => <Typography sx={{ color: 'text.secondary' }}>{row.issuedDate}</Typography>
-  // },
   {
     flex: 0.2,
     minWidth: 130,
