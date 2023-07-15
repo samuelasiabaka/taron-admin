@@ -1,6 +1,6 @@
 // ** React Imports
 import { useState } from 'react'
-// ** MUI Imports
+
 import Tab from '@mui/material/Tab'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
@@ -8,9 +8,6 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import MuiTabList from '@mui/lab/TabList'
-
-// ** Icon Imports
-import Icon from 'src/@core/components/icon'
 
 // ** Custom Components Imports
 import ActionLogsTab from './ActionLogs'

@@ -953,26 +953,25 @@ const FlaggedContents = () => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
   return (
-    <>
-      <Grid container spacing={6}>
-        <Grid item xs={12}>
-          <Card>
-            <CardHeader title='Flagged Contents' />
-            <DataGrid
-              autoHeight
-              rowHeight={54}
-              columns={columns}
-              rows={rows}
-              disableRowSelectionOnClick
-              pageSizeOptions={[7, 10, 25, 50]}
-              paginationModel={paginationModel}
-              onPaginationModelChange={setPaginationModel}
-            />
-          </Card>
-        </Grid>
+    <Grid container spacing={6}>
+      <Grid item xs={12}>
+        <Card>
+          <CardHeader title='Flagged Contents' />
+          <DataGrid
+            autoHeight
+            rowHeight={54}
+            columns={columns}
+            rows={rows}
+            disableRowSelectionOnClick
+            pageSizeOptions={[7, 10, 25, 50]}
+            paginationModel={paginationModel}
+            onPaginationModelChange={setPaginationModel}
+          />
+        </Card>
       </Grid>
-    </>
+    </Grid>
   )
 }
 
