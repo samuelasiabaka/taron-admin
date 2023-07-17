@@ -191,7 +191,7 @@ const ReportedEvents = ({ apiData }) => {
       <Grid item xs={12}>
         <Card>
           <CardHeader
-            title='Ban And Suspension List'
+            title='Reported Events'
             action={<CustomTextField value={value} placeholder='Search' onChange={e => handleFilter(e.target.value)} />}
           />
 

@@ -1,42 +1,60 @@
 // ** React Imports
-import { useState, useEffect } from 'react'
-
-// ** Next Import
-import Link from 'next/link'
+import { useState, useEffect, useCallback } from 'react'
 
 // ** MUI Imports
-import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import { DataGrid } from '@mui/x-data-grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
+import Menu from '@mui/material/Menu'
+import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
+import MenuItem from '@mui/material/MenuItem'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import { DataGrid } from '@mui/x-data-grid'
+
+// ** Icon Imports
+import Icon from 'src/@core/components/icon'
+
+// ** Store Imports
+import { useDispatch, useSelector } from 'react-redux'
 
 // ** Custom Component Import
 import CustomTextField from 'src/@core/components/mui/text-field'
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 
-// ** Store Imports
-import { useDispatch, useSelector } from 'react-redux'
+// ** Utils Import
+import { getInitials } from 'src/@core/utils/get-initials'
 
 // ** Actions Imports
 import { fetchData, deleteUser } from 'src/store/apps/user'
 
-const now = new Date()
-const currentMonth = now.toLocaleString('default', { month: 'short' })
-
-const LinkStyled = styled(Link)(({ theme }) => ({
-  textDecoration: 'none',
-  color: `${theme.palette.primary.main} !important`
-}))
+// ** Third Party Components
+import axios from 'axios'
+import CardStatsHorizontalWithDetails from 'src/@core/components/card-statistics/card-stats-horizontal-with-details'
 
 const userStatusObj = {
   active: 'success',
   pending: 'warning',
   inactive: 'secondary'
+}
+
+// ** renders client column
+const renderClient = row => {
+  if (row.avatar.length) {
+    return <CustomAvatar src={row.avatar} sx={{ mr: 2.5, width: 38, height: 38 }} />
+  } else {
+    return (
+      <CustomAvatar
+        skin='light'
+        color={row.avatarColor}
+        sx={{ mr: 2.5, width: 38, height: 38, fontWeight: 500, fontSize: theme => theme.typography.body1.fontSize }}
+      >
+        {getInitials(row.fullName ? row.fullName : 'John Doe')}
+      </CustomAvatar>
+    )
+  }
 }
 
 const columns = [
@@ -74,7 +92,7 @@ const columns = [
   },
   {
     flex: 0.1,
-    minWidth: 110,
+    minWidth: 100,
     field: 'status',
     headerName: 'Status',
     renderCell: ({ row }) => {
@@ -92,7 +110,7 @@ const columns = [
   },
   {
     flex: 0.3,
-    minWidth: 100,
+    minWidth: 120,
     sortable: false,
     field: 'actions',
     headerName: 'Actions',
@@ -104,14 +122,13 @@ const columns = [
   }
 ]
 
-const FlaggedContents = () => {
+const FlaggedContents = ({ apiData }) => {
   // ** State
-  const [anchorEl, setAnchorEl] = useState(null)
-  const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 7 })
   const [role, setRole] = useState('')
   const [plan, setPlan] = useState('')
   const [value, setValue] = useState('')
   const [status, setStatus] = useState('')
+  const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 10 })
 
   // ** Hooks
   const dispatch = useDispatch()
@@ -127,36 +144,39 @@ const FlaggedContents = () => {
     )
   }, [dispatch, plan, role, status, value])
 
-  // ** Var
-  const open = Boolean(anchorEl)
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  const handleFilter = val => {
+  const handleFilter = useCallback(val => {
     setValue(val)
-  }
+  }, [])
 
   return (
-    <Grid container spacing={6}>
+    <Grid container spacing={6.5}>
+      <Grid item xs={12}>
+        {apiData && (
+          <Grid container spacing={6}>
+            {apiData.statsHorizontalWithDetails.map((item, index) => {
+              return (
+                <Grid item xs={12} md={3} sm={6} key={index}>
+                  <CardStatsHorizontalWithDetails {...item} />
+                </Grid>
+              )
+            })}
+          </Grid>
+        )}
+      </Grid>
       <Grid item xs={12}>
         <Card>
           <CardHeader
             title='Flagged Contents'
             action={<CustomTextField value={value} placeholder='Search' onChange={e => handleFilter(e.target.value)} />}
           />
+
           <DataGrid
             autoHeight
-            rowHeight={54}
-            columns={columns}
+            rowHeight={62}
             rows={store.data}
+            columns={columns}
             disableRowSelectionOnClick
-            pageSizeOptions={[7, 10, 25, 50]}
+            pageSizeOptions={[10, 25, 50]}
             paginationModel={paginationModel}
             onPaginationModelChange={setPaginationModel}
           />
@@ -164,6 +184,17 @@ const FlaggedContents = () => {
       </Grid>
     </Grid>
   )
+}
+
+export const getStaticProps = async () => {
+  const res = await axios.get('/cards/statistics')
+  const apiData = res.data
+
+  return {
+    props: {
+      apiData
+    }
+  }
 }
 
 export default FlaggedContents
