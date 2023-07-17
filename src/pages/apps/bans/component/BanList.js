@@ -34,6 +34,7 @@ import { fetchData, deleteUser } from 'src/store/apps/user'
 
 // ** Third Party Components
 import axios from 'axios'
+import CardStatsHorizontalWithDetails from 'src/@core/components/card-statistics/card-stats-horizontal-with-details'
 
 const userStatusObj = {
   active: 'success',
@@ -243,6 +244,7 @@ const BanList = ({ apiData }) => {
       })
     )
   }, [dispatch, plan, role, status, value])
+
   const handleFilter = useCallback(val => {
     setValue(val)
   }, [])
