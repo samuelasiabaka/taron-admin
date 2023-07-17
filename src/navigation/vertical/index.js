@@ -46,38 +46,6 @@ const navigation = () => {
       ]
     },
     {
-      title: 'Interaction',
-      icon: 'tabler:social',
-      children: [
-        {
-          title: 'Notifications',
-          path: '/apps/invoice/list'
-        },
-        {
-          title: 'Feedback and Ratings',
-          path: '/apps/invoice/preview'
-        },
-        {
-          title: 'Messaging',
-          path: '/apps/invoice/edit'
-        }
-      ]
-    },
-    {
-      title: 'Registration/Auth',
-      icon: 'tabler:lock',
-      children: [
-        {
-          title: 'Registration Review',
-          path: '/apps/invoice/list'
-        },
-        {
-          title: 'Password Management',
-          path: '/apps/invoice/preview'
-        }
-      ]
-    },
-    {
       title: 'Analytics/Insights',
       icon: 'tabler:brand-google-analytics',
       children: [

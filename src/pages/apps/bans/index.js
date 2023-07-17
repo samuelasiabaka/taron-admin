@@ -7,7 +7,6 @@ import PageHeader from 'src/@core/components/page-header'
 
 // ** Custom Components Imports
 import BanList from './component/BanList'
-import SuspensionList from './component/SuspensionList'
 
 const BansAndSuspenstion = () => {
   return (
@@ -29,9 +28,6 @@ const BansAndSuspenstion = () => {
         </Grid>
         <Grid item xs={12}>
           <BanList />
-        </Grid>
-        <Grid item xs={12}>
-          <SuspensionList />
         </Grid>
       </Grid>
     </>

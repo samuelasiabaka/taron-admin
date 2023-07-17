@@ -10,7 +10,6 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import Menu from '@mui/material/Menu'
 import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
@@ -22,10 +21,10 @@ import Icon from 'src/@core/components/icon'
 // ** Store Imports
 import { useDispatch, useSelector } from 'react-redux'
 
-// ** Custom Components Imports
+// ** Custom Component Import
+import CustomTextField from 'src/@core/components/mui/text-field'
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
-import CardStatsHorizontalWithDetails from 'src/@core/components/card-statistics/card-stats-horizontal-with-details'
 
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'
@@ -59,10 +58,68 @@ const renderClient = row => {
   }
 }
 
+const RowOptions = ({ id }) => {
+  // ** Hooks
+  const dispatch = useDispatch()
+
+  // ** State
+  const [anchorEl, setAnchorEl] = useState(null)
+  const rowOptionsOpen = Boolean(anchorEl)
+
+  const handleRowOptionsClick = event => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleRowOptionsClose = () => {
+    setAnchorEl(null)
+  }
+
+  const handleDelete = () => {
+    dispatch(deleteUser(id))
+    handleRowOptionsClose()
+  }
+
+  return (
+    <>
+      <IconButton size='small' onClick={handleRowOptionsClick}>
+        <Icon icon='tabler:dots-vertical' />
+      </IconButton>
+      <Menu
+        keepMounted
+        anchorEl={anchorEl}
+        open={rowOptionsOpen}
+        onClose={handleRowOptionsClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right'
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right'
+        }}
+        PaperProps={{ style: { minWidth: '8rem' } }}
+      >
+        <MenuItem sx={{ '& svg': { mr: 2 } }} onClick={handleRowOptionsClose}>
+          Send Warning
+        </MenuItem>
+        <MenuItem onClick={handleRowOptionsClose} sx={{ '& svg': { mr: 2 } }}>
+          Unban
+        </MenuItem>
+        <MenuItem onClick={handleDelete} sx={{ '& svg': { mr: 2 } }}>
+          Unsuspend
+        </MenuItem>
+        <MenuItem onClick={handleDelete} sx={{ '& svg': { mr: 2 } }}>
+          Ban Permanently
+        </MenuItem>
+      </Menu>
+    </>
+  )
+}
+
 const columns = [
   {
     flex: 0.25,
-    minWidth: 280,
+    minWidth: 250,
     field: 'fullName',
     headerName: 'Full Name',
     renderCell: ({ row }) => {
@@ -98,7 +155,7 @@ const columns = [
     flex: 0.15,
     minWidth: 120,
     headerName: 'Username',
-    field: 'currentPlan',
+    field: 'username',
     renderCell: ({ row }) => {
       return (
         <Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize' }}>
@@ -116,7 +173,7 @@ const columns = [
     renderCell: ({ row }) => {
       return (
         <Typography noWrap sx={{ color: 'text.secondary' }}>
-          {row.country}
+          {row.email}
         </Typography>
       )
     }
@@ -156,12 +213,12 @@ const columns = [
   },
 
   {
-    flex: 0.1,
+    flex: 0.2,
     minWidth: 100,
     sortable: false,
     field: 'actions',
     headerName: 'Actions',
-    renderCell: ({ row }) => <Button variant='contained'>Lift Ban</Button>
+    renderCell: ({ row }) => <RowOptions id={row.id} />
   }
 ]
 
@@ -186,17 +243,8 @@ const BanList = ({ apiData }) => {
       })
     )
   }, [dispatch, plan, role, status, value])
-
-  const handleRoleChange = useCallback(e => {
-    setRole(e.target.value)
-  }, [])
-
-  const handlePlanChange = useCallback(e => {
-    setPlan(e.target.value)
-  }, [])
-
-  const handleStatusChange = useCallback(e => {
-    setStatus(e.target.value)
+  const handleFilter = useCallback(val => {
+    setValue(val)
   }, [])
 
   return (
@@ -216,7 +264,10 @@ const BanList = ({ apiData }) => {
       </Grid>
       <Grid item xs={12}>
         <Card>
-          <CardHeader title='Ban List' />
+          <CardHeader
+            title='Ban And Suspension List'
+            action={<CustomTextField value={value} placeholder='Search' onChange={e => handleFilter(e.target.value)} />}
+          />
 
           <DataGrid
             autoHeight
