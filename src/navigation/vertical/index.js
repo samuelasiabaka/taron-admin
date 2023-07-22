@@ -72,7 +72,7 @@ const navigation = () => {
       children: [
         {
           title: 'Creation',
-          path: '/apps/invoice/list'
+          path: '/apps/events/creation'
         },
         {
           title: 'Editing',
