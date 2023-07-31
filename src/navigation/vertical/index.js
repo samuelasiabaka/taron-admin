@@ -76,7 +76,7 @@ const navigation = () => {
         },
         {
           title: 'Editing',
-          path: '/apps/invoice/preview'
+          path: '/apps/events/edit'
         },
         {
           title: 'Approval',

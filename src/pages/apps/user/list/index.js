@@ -153,7 +153,7 @@ const columns = [
             <Typography
               noWrap
               component={Link}
-              href='/apps/user/view/account'
+              href='/pages/user-profile/profile'
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
