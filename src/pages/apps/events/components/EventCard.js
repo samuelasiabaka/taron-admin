@@ -27,6 +27,22 @@ import TimePicker from './TimePicker'
 import EventBanner from './EventBanner'
 import DropzoneWrapper from 'src/@core/styles/libs/react-dropzone'
 
+const eventDate = new Date()
+
+const events = [
+  { category: 'Livestyle', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Travel', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Outdoor', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Music', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Travel', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Business', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Religious', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Funeral', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Birthday', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Sport', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
+  { category: 'Festival', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' }
+]
+
 const Transition = forwardRef(function Transition(props, ref) {
   return <Fade ref={ref} {...props} />
 })
