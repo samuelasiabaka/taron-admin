@@ -30,10 +30,10 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import DatePicker from 'react-datepicker'
 
 // ** Custom Component Imports
-import CustomInput from './components/PickersCustomInput'
-import CheckBox from './components/CheckBox'
-import DatePickerSelect from './components/DatePickerSelect'
-import TimePicker from './components/TimePicker'
+import CustomInput from '../components/PickersCustomInput'
+import CheckBox from '../components/CheckBox'
+import DatePickerSelect from '../components/DatePickerSelect'
+import TimePicker from '../components/TimePicker'
 
 // ** Custom Component Import
 import CustomTextField from 'src/@core/components/mui/text-field'
@@ -46,7 +46,7 @@ import PageHeader from 'src/@core/components/page-header'
 
 // ** Styled Component
 import DropzoneWrapper from 'src/@core/styles/libs/react-dropzone'
-import EVentBanner from './components/EventBanner'
+import EventBanner from '../components/EventBanner'
 
 const LinkStyled = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
@@ -88,7 +88,7 @@ const Creation = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <DropzoneWrapper>
-                    <EVentBanner />
+                    <EventBanner />
                   </DropzoneWrapper>
                 </Grid>
                 <Grid item xs={12}>

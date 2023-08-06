@@ -27,18 +27,70 @@ import Icon from 'src/@core/components/icon'
 
 // ** Custom Components Imports
 import PageHeader from 'src/@core/components/page-header'
+import EventCard from '../components/EventCard'
 
 const EditBlogEvent = () => {
+  const [role, setRole] = useState('')
+
+  const handleRoleChange = useCallback(e => {
+    setRole(e.target.value)
+  }, [])
+
   return (
-    <Grid container spacing={6.5}>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <PageHeader
           title={
-            <Typography variant='h2' sx={{ mb: 6 }}>
+            <Typography variant='h2' sx={{ mb: 3 }}>
               Edit Event Blog Post
             </Typography>
           }
         />
+      </Grid>
+      <Grid item xs={12} sx={{ mb: 3 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+          <Typography variant='h4'>Events</Typography>
+          <CustomTextField
+            width='auto'
+            select
+            defaultValue='All'
+            SelectProps={{
+              value: role,
+              displayEmpty: true,
+              onChange: e => handleRoleChange(e)
+            }}
+          >
+            <MenuItem value=''>All</MenuItem>
+            <MenuItem value='past'>Past</MenuItem>
+            <MenuItem value='upcoming'>Upcoming</MenuItem>
+          </CustomTextField>
+        </Box>
+      </Grid>
+      <Grid container spacing={6} className='match-height' pl={5}>
+        <Grid item md={4} sm={6} xs={12}>
+          <EventCard />
+        </Grid>
+        <Grid item md={4} sm={6} xs={12}>
+          <EventCard />
+        </Grid>
+        <Grid item md={4} sm={6} xs={12}>
+          <EventCard />
+        </Grid>
+        <Grid item md={4} sm={6} xs={12}>
+          <EventCard />
+        </Grid>
+        <Grid item md={4} sm={6} xs={12}>
+          <EventCard />
+        </Grid>
+        <Grid item md={4} sm={6} xs={12}>
+          <EventCard />
+        </Grid>
+        <Grid item md={4} sm={6} xs={12}>
+          <EventCard />
+        </Grid>
+        <Grid item md={4} sm={6} xs={12}>
+          <EventCard />
+        </Grid>
       </Grid>
     </Grid>
   )
