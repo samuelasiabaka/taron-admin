@@ -1,6 +1,5 @@
 // ** React Imports
 import { useState, forwardRef } from 'react'
-// ** Next Imports
 import Link from 'next/link'
 
 import Card from '@mui/material/Card'

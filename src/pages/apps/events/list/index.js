@@ -84,7 +84,7 @@ const EditBlogEvent = () => {
       </Grid>
       <Grid container spacing={6} className='match-height' pl={5}>
         {eventsList.map(event => (
-          <Grid item md={4} sm={6} xs={12}>
+          <Grid item md={4} sm={6} xs={12} key={event.title}>
             <Link style={{ textDecoration: 'none' }} href={`/apps/events/list/${event.category}`}>
               <EventCard event={event} />
             </Link>
