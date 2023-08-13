@@ -71,20 +71,12 @@ const navigation = () => {
       icon: 'tabler:timeline-event-plus',
       children: [
         {
-          title: 'Creation',
+          title: 'Create Event',
           path: '/apps/events/creation'
         },
         {
-          title: 'Editing',
-          path: '/apps/events/edit'
-        },
-        {
-          title: 'Approval',
-          path: '/apps/invoice/edit'
-        },
-        {
-          title: 'Cancellation',
-          path: '/apps/invoice/add'
+          title: 'Event List',
+          path: '/apps/events/list'
         }
       ]
     },

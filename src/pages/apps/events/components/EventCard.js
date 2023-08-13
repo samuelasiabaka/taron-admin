@@ -21,28 +21,6 @@ import Icon from 'src/@core/components/icon'
 // ** Hooks
 import useBgColor from 'src/@core/hooks/useBgColor'
 
-import CheckBox from './CheckBox'
-import DatePickerSelect from './DatePickerSelect'
-import TimePicker from './TimePicker'
-import EventBanner from './EventBanner'
-import DropzoneWrapper from 'src/@core/styles/libs/react-dropzone'
-
-const eventDate = new Date()
-
-const events = [
-  { category: 'Livestyle', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Travel', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Outdoor', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Music', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Travel', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Business', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Religious', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Funeral', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Birthday', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Sport', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' },
-  { category: 'Festival', title: 'Desert Safari - Dubai DX', date: eventDate, location: '123 Avenue, New York' }
-]
-
 const Transition = forwardRef(function Transition(props, ref) {
   return <Fade ref={ref} {...props} />
 })
@@ -62,17 +40,10 @@ const CustomCloseButton = styled(IconButton)(({ theme }) => ({
   }
 }))
 
-export default function EventCard() {
-  // ** States
-  const [show, setShow] = useState(false)
-  const [date, setDate] = useState(new Date())
-  const [time, setTime] = useState(new Date())
-
+export default function EventCard({ event }) {
   // ** Hook
   const theme = useTheme()
   const { direction } = theme
-  const popperPlacement = direction === 'ltr' ? 'bottom-start' : 'bottom-end'
-  const bgColors = useBgColor()
 
   return (
     <Card sx={{ position: 'relative' }}>
@@ -88,26 +59,26 @@ export default function EventCard() {
         }}
       >
         <Typography color='white' opacity='100%'>
-          Category
+          {event.category}
         </Typography>
       </Button>
       <CardContent>
         <Box>
           <Typography gutterBottom variant='h5' component='div' fontWeight={700}>
-            Desert Safari - Dubai DX
+            {event.title}
           </Typography>
         </Box>
         <Box pb={2} spacing={3}>
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignContent: 'center' }}>
             <Icon icon='tabler:clock' />
             <Typography variant='body2' color='text.secondary'>
-              Date | Time
+              {event.date}
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignContent: 'center' }}>
             <Icon icon='tabler:map-pin-filled' color='red' />
             <Typography variant='body2' color='text.secondary'>
-              Location
+              {event.location}
             </Typography>
           </Box>
         </Box>
@@ -121,121 +92,8 @@ export default function EventCard() {
             <Avatar src='/images/avatars/5.png' alt='Jimmy Hanson' />
             <Avatar src='/images/avatars/6.png' alt='Hallie Richards' />
           </AvatarGroup>
-          <Button size='small'>
-            <Icon icon='mdi:share' />
-          </Button>
         </Box>
       </CardContent>
-      <CardActions>
-        <Button variant='contained' onClick={() => setShow(true)}>
-          Edit
-        </Button>
-        <Button variant='contained'>Delete</Button>
-      </CardActions>
-      <Dialog
-        fullWidth
-        open={show}
-        maxWidth='md'
-        scroll='body'
-        onClose={() => setShow(false)}
-        TransitionComponent={Transition}
-        onBackdropClick={() => setShow(false)}
-        sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
-      >
-        <DialogContent
-          sx={{
-            pb: theme => `${theme.spacing(8)} !important`,
-            px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`],
-            pt: theme => [`${theme.spacing(8)} !important`, `${theme.spacing(12.5)} !important`]
-          }}
-        >
-          <CustomCloseButton onClick={() => setShow(false)}>
-            <Icon icon='tabler:x' fontSize='1.25rem' />
-          </CustomCloseButton>
-          <Box sx={{ mb: 5, textAlign: 'center' }}>
-            <Typography variant='h3' sx={{ mb: 3 }}>
-              Edit Event
-            </Typography>
-          </Box>
-          <Grid item xs={12}>
-            <Card>
-              <CardContent>
-                <form onSubmit={e => e.preventDefault()}>
-                  <Grid container spacing={6}>
-                    <Grid item xs={12}>
-                      <CustomTextField fullWidth label='Event Title' placeholder='Title' />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <DropzoneWrapper>
-                        <EventBanner />
-                      </DropzoneWrapper>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <CustomTextField
-                        select
-                        fullWidth
-                        defaultValue='default'
-                        label='Event Category'
-                        id='custom-select'
-                      >
-                        <MenuItem value='default' disabled>
-                          <em>Select Category</em>
-                        </MenuItem>
-                        <MenuItem value='In-person event'>In-person event</MenuItem>
-                        <MenuItem value='Audio event'>Audio event</MenuItem>
-                        <MenuItem value='Online event'>Online</MenuItem>
-                        <MenuItem value='Hybrid event'>In-person + Online</MenuItem>
-                      </CustomTextField>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <CustomTextField
-                        fullWidth
-                        rows={4}
-                        multiline
-                        label='Event Details'
-                        defaultValue=''
-                        id='textarea-outlined-static'
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <DatePickerSelect popperPlacement={popperPlacement} />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TimePicker popperPlacement={popperPlacement} />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <CustomTextField fullWidth label='Location' placeholder='' />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <CustomTextField fullWidth label='Location URL and Map' placeholder='' />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <CustomTextField fullWidth label='Tags' placeholder='' />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <CheckBox />
-                    </Grid>
-                  </Grid>
-                </form>
-              </CardContent>
-            </Card>
-          </Grid>
-        </DialogContent>
-        <DialogActions
-          sx={{
-            justifyContent: 'center',
-            px: theme => [`${theme.spacing(5)} !important`, `${theme.spacing(15)} !important`],
-            pb: theme => [`${theme.spacing(8)} !important`, `${theme.spacing(12.5)} !important`]
-          }}
-        >
-          <Button variant='contained' sx={{ mr: 1 }} onClick={() => setShow(false)}>
-            Update
-          </Button>
-          <Button variant='tonal' color='secondary' onClick={() => setShow(false)}>
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Card>
   )
 }

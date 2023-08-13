@@ -29,6 +29,22 @@ import Icon from 'src/@core/components/icon'
 import PageHeader from 'src/@core/components/page-header'
 import EventCard from '../components/EventCard'
 
+const eventDate = new Date()
+
+const eventsList = [
+  { category: 'Livestyle', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Travel', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Outdoor', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Music', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Travel', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Business', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Religious', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Funeral', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Birthday', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Sport', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' },
+  { category: 'Festival', title: 'Desert Safari - Dubai DX', date: 'Date | Time', location: '123 Avenue, New York' }
+]
+
 const EditBlogEvent = () => {
   const [role, setRole] = useState('')
 
@@ -42,7 +58,7 @@ const EditBlogEvent = () => {
         <PageHeader
           title={
             <Typography variant='h2' sx={{ mb: 3 }}>
-              Edit Event Blog Post
+              Events List
             </Typography>
           }
         />
@@ -67,30 +83,13 @@ const EditBlogEvent = () => {
         </Box>
       </Grid>
       <Grid container spacing={6} className='match-height' pl={5}>
-        <Grid item md={4} sm={6} xs={12}>
-          <EventCard />
-        </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-          <EventCard />
-        </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-          <EventCard />
-        </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-          <EventCard />
-        </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-          <EventCard />
-        </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-          <EventCard />
-        </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-          <EventCard />
-        </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-          <EventCard />
-        </Grid>
+        {eventsList.map(event => (
+          <Grid item md={4} sm={6} xs={12}>
+            <Link style={{ textDecoration: 'none' }} href={`/apps/events/list/${event.category}`}>
+              <EventCard event={event} />
+            </Link>
+          </Grid>
+        ))}
       </Grid>
     </Grid>
   )
